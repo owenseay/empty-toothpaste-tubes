@@ -48,7 +48,7 @@
     }
 
     .hero-logo {
-      width: clamp(160px, 25vw, 280px);
+      width: clamp(200px, 35vw, 280px);
       height: auto;
       margin-bottom: 1.5rem;
       filter: drop-shadow(0 4px 30px rgba(43, 184, 154, 0.3));
@@ -517,14 +517,20 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
-    .marquee-inner {
-      display: inline-block;
+    .marquee-track {
+      display: flex;
+      width: max-content;
       animation: marquee 90s linear infinite;
+      will-change: transform;
+    }
+
+    .marquee-track span {
       font-family: 'Space Mono', monospace;
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.3em;
       opacity: 0.2;
+      flex-shrink: 0;
     }
 
     @keyframes marquee {
@@ -599,7 +605,10 @@
 
   <!-- MARQUEE -->
   <div class="marquee">
-    <div class="marquee-inner" id="marquee-text"></div>
+    <div class="marquee-track" id="marquee-track">
+      <span id="marquee-a"></span>
+      <span id="marquee-b"></span>
+    </div>
   </div>
 
   <!-- COUNTER -->
@@ -930,8 +939,9 @@
 
       // Replace {name} placeholders with random names
       const filled = shuffle(generated).map(s => s.replace(/\{name\}/g, () => pick(names)));
-      const marqueeStr = (filled.join(' · ') + ' · ').repeat(2);
-      document.getElementById('marquee-text').textContent = marqueeStr;
+      const marqueeStr = filled.join(' · ') + ' · ';
+      document.getElementById('marquee-a').textContent = marqueeStr;
+      document.getElementById('marquee-b').textContent = marqueeStr;
     }
 
     // Fade-in on scroll
