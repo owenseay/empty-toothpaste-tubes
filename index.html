@@ -203,38 +203,6 @@
       font-weight: 600;
     }
 
-    /* ---- CONVERGENCE ANIMATION ---- */
-    .convergence-section {
-      padding: 0 2rem 4rem;
-      margin-top: -2rem;
-      display: flex;
-      justify-content: center;
-    }
-
-    .convergence-container {
-      position: relative;
-      width: min(450px, 85vw);
-      height: min(450px, 85vw);
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .convergence-container .map-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('charleston-map.png');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-    }
-
-    .convergence-container canvas {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
     /* ---- HOW IT WORKS ---- */
     .steps-section {
       padding: 4rem 2rem 6rem;
@@ -648,14 +616,6 @@
     </p>
   </section>
 
-  <!-- CONVERGENCE ANIMATION -->
-  <section class="convergence-section">
-    <div class="convergence-container">
-      <div class="map-bg"></div>
-      <canvas id="convergence"></canvas>
-    </div>
-  </section>
-
   <!-- STEPS -->
   <section class="steps-section fade-in">
     <h2>How It Works</h2>
@@ -988,118 +948,6 @@
     dateEl.textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
     initScrollAnimations();
-
-    // ---- CONVERGENCE ANIMATION ----
-    (function() {
-      const cvs = document.getElementById('convergence');
-      const cctx = cvs.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      let cW, cH, ccx, ccy;
-
-      function cResize() {
-        const rect = cvs.parentElement.getBoundingClientRect();
-        cW = rect.width;
-        cH = rect.height;
-        cvs.width = cW * dpr;
-        cvs.height = cH * dpr;
-        cctx.scale(dpr, dpr);
-        ccx = cW / 2;
-        ccy = cH / 2;
-      }
-      cResize();
-      window.addEventListener('resize', cResize);
-
-      const tubeSrcs = [
-        'animation/tube-1.png', 'animation/tube-2.png', 'animation/tube-3.png',
-        'animation/tube-4.png', 'animation/tube-5.png', 'animation/tube-6.png',
-      ];
-      const tubeImages = [];
-      let tubesLoaded = 0;
-      tubeSrcs.forEach(src => {
-        const img = new Image();
-        img.onload = () => { tubesLoaded++; };
-        img.src = src;
-        tubeImages.push(img);
-      });
-
-      const NUM_DOTS = 90;
-      const CIRCLE_RADIUS = 0.46;
-      const BREATHE_CYCLE_MS = 1167;
-      const BREATHE_AMPLITUDE = 0.045;
-
-      function generateDots() {
-        const dots = [];
-        for (let i = 0; i < NUM_DOTS; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const dist = Math.random() * 0.42;
-          dots.push({
-            x: 0.5 + Math.cos(angle) * dist,
-            y: 0.5 + Math.sin(angle) * dist,
-            size: 24 + Math.random() * 14,
-            imgIndex: Math.floor(Math.random() * tubeSrcs.length),
-            rotation: (Math.random() - 0.5) * 0.6,
-            rotSpeed: (Math.random() - 0.5) * 0.0003,
-            phase: Math.random() * Math.PI * 2,
-            driftX: (Math.random() - 0.5) * 0.0002,
-            driftY: (Math.random() - 0.5) * 0.0002,
-          });
-        }
-        return dots;
-      }
-
-      const dots = generateDots();
-
-      function animate(now) {
-        cctx.clearRect(0, 0, cW, cH);
-        if (tubesLoaded < tubeSrcs.length) { requestAnimationFrame(animate); return; }
-
-        const radius = CIRCLE_RADIUS;
-
-        // Circle outline (hidden — keeping boundary logic only)
-        // cctx.beginPath();
-        // cctx.arc(ccx, ccy, circleRadiusPx, 0, Math.PI * 2);
-        // cctx.strokeStyle = 'rgba(240, 247, 244, 0.2)';
-        // cctx.lineWidth = 1.5;
-        // cctx.stroke();
-
-        // Tubes — drift and stay inside the breathing circle
-        for (const dot of dots) {
-          dot.x += dot.driftX;
-          dot.y += dot.driftY;
-          dot.rotation += dot.rotSpeed;
-
-          // Bounce off circle boundary
-          const dx = dot.x - 0.5;
-          const dy = dot.y - 0.5;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          const maxDist = radius - 0.03;
-          if (maxDist > 0 && d > maxDist) {
-            dot.x = 0.5 + (dx / d) * maxDist;
-            dot.y = 0.5 + (dy / d) * maxDist;
-            dot.driftX *= -1;
-            dot.driftY *= -1;
-          }
-
-          const pulse = 1 + Math.sin(now * 0.002 + dot.phase) * 0.12;
-          const s = dot.size * pulse;
-
-          if (s > 1) {
-            const img = tubeImages[dot.imgIndex];
-            const aspect = img.naturalWidth / img.naturalHeight;
-            cctx.save();
-            cctx.translate(dot.x * cW, dot.y * cH);
-            cctx.rotate(dot.rotation);
-            cctx.globalAlpha = Math.min(1, 0.7 + pulse * 0.15);
-            cctx.drawImage(img, -s * aspect / 2, -s / 2, s * aspect, s);
-            cctx.restore();
-          }
-        }
-
-        requestAnimationFrame(animate);
-      }
-
-      requestAnimationFrame(animate);
-    })();
 
     // Lightbox close (element is after script tag, so defer)
     document.addEventListener('DOMContentLoaded', () => {
