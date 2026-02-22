@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empty Toothpaste Tubes</title>
+  <meta name="description" content="A community art project in Charleston, WV. Donate your empty toothpaste tube. Filled with plaster. Displayed forever.">
+  <meta property="og:title" content="Empty Toothpaste Tubes">
+  <meta property="og:description" content="A community art project collecting empty toothpaste tubes, filling them with plaster, and displaying them in Charleston, WV.">
+  <meta property="og:image" content="emptytubeicon.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://emptytoothpastetubes.com">
+  <link rel="icon" type="image/webp" href="tube-no-bg.webp">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #f0f7f4;
+      --black: #0d1b1a;
+      --plaster: #dce8e2;
+      --accent: #3edab7;
+      --accent-dark: #2bb89a;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 2rem 7rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-logo {
+      width: clamp(160px, 25vw, 280px);
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 30px rgba(62, 218, 183, 0.25));
+      animation: floatTube 4s ease-in-out infinite;
+    }
+
+    @keyframes floatTube {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      margin-top: 1.5rem;
+      opacity: 0.7;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      width: 24px;
+      height: 40px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      opacity: 0.5;
+    }
+
+    .scroll-hint::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: 4px;
+      height: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 2px;
+      transform: translateX(-50%);
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+      0% { top: 6px; opacity: 1; }
+      70% { top: 22px; opacity: 0; }
+      100% { top: 6px; opacity: 0; }
+    }
+
+    /* ---- COUNTER ---- */
+    .counter-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .counter-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .counter-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    .counter-number {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(4rem, 15vw, 10rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .counter-goal {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      opacity: 0.4;
+      margin-top: 0.5rem;
+    }
+
+    /* ---- VIDEO ---- */
+    .video-section {
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .video-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+    }
+
+    /* ---- WHAT IS THIS ---- */
+    .about-section {
+      padding: 6rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .about-section p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .about-section .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ---- CONVERGENCE ANIMATION ---- */
+    .convergence-section {
+      padding: 0 2rem 4rem;
+      margin-top: -2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .convergence-container {
+      position: relative;
+      width: min(450px, 85vw);
+      height: min(450px, 85vw);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .convergence-container .map-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('charleston-map.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+    }
+
+    .convergence-container canvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ---- HOW IT WORKS ---- */
+    .steps-section {
+      padding: 4rem 2rem 6rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .steps-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        padding: 4rem 2rem 4rem;
+      }
+
+      .scroll-hint {
+        display: none;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: auto;
+        padding: 4rem 2rem 3rem;
+      }
+
+      .scroll-hint {
+        display: none;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid rgba(240, 247, 244, 0.12);
+      border-radius: 8px;
+    }
+
+    .step-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    /* ---- TUBE GRID ---- */
+    .grid-section {
+      padding: 4rem 2rem;
+    }
+
+    .grid-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .grid-subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      opacity: 0.4;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .tube-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 4px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tube-card {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      animation: cardShuffle var(--shuffle-duration, 6s) ease-in-out var(--shuffle-delay, 0s) infinite;
+    }
+
+    .tube-card:hover {
+      animation-play-state: paused;
+      transform: scale(1.05);
+      z-index: 2;
+    }
+
+    @keyframes cardShuffle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(var(--dx1, 2px), var(--dy1, -2px)) rotate(var(--dr1, 0.5deg)); }
+      50% { transform: translate(var(--dx2, -1px), var(--dy2, 3px)) rotate(var(--dr2, -0.8deg)); }
+      75% { transform: translate(var(--dx3, -2px), var(--dy3, -1px)) rotate(var(--dr3, 0.3deg)); }
+    }
+
+    .tube-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tube-card .tube-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .tube-card:hover .tube-info {
+      opacity: 1;
+    }
+
+    /* Empty state */
+    .empty-grid {
+      text-align: center;
+      padding: 4rem 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .empty-grid-visual {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      max-width: 400px;
+      margin: 0 auto 1rem;
+      opacity: 0.15;
+    }
+
+    .ghost-tile {
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
+      animation: ghostShuffle var(--gs-dur, 5s) ease-in-out var(--gs-del, 0s) infinite;
+    }
+
+    @keyframes ghostShuffle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+      25% { transform: translate(var(--gx1, 3px), var(--gy1, -2px)) rotate(var(--gr1, 1deg)); opacity: 0.5; }
+      50% { transform: translate(var(--gx2, -2px), var(--gy2, 3px)) rotate(var(--gr2, -1deg)); opacity: 0.6; }
+      75% { transform: translate(var(--gx3, 2px), var(--gy3, -1px)) rotate(var(--gr3, 0.5deg)); opacity: 0.4; }
+    }
+
+    .empty-grid p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      opacity: 0.5;
+      line-height: 1.6;
+    }
+
+    /* ---- DONATE CTA ---- */
+    .cta-section {
+      padding: 6rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      opacity: 0.6;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--black);
+      background: var(--accent);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(62, 218, 183, 0.3);
+    }
+
+    /* ---- FAQ ---- */
+    .faq-section {
+      padding: 6rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .faq-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .faq-item p {
+      font-size: 1rem;
+      opacity: 0.7;
+      line-height: 1.7;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      opacity: 0.3;
+    }
+
+    footer a {
+      color: var(--white);
+    }
+
+    /* ---- MARQUEE ---- */
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 90s linear infinite;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      opacity: 0.2;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ---- ANIMATIONS ---- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- LIGHTBOX ---- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      cursor: pointer;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 4px;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-info {
+      margin-top: 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="tube-no-bg.webp" alt="Toothpaste tube" class="hero-logo">
+    <h1>Empty<br>Toothpaste<br><span>Tubes</span></h1>
+    <p class="tagline">Collecting all of the empty toothpaste tubes in Charleston, WV and then displaying them in public.</p>
+    <div class="scroll-hint"></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-inner" id="marquee-text"></div>
+  </div>
+
+  <!-- COUNTER -->
+  <section class="counter-section fade-in">
+    <div class="counter-container">
+      <div class="counter-label">Tubes Collected</div>
+      <div class="counter-number" id="counter">0</div>
+      <div class="counter-goal">tubes</div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section fade-in">
+    <h2>The Tubes</h2>
+    <div class="video-wrapper">
+      <video controls preload="metadata">
+        <source src="empty-toothpaste-tubes-compressed.mp4" type="video/mp4">
+        Your browser doesn't support video.
+      </video>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section fade-in">
+    <h2>What is this?</h2>
+    <p>
+      We're collecting all of the empty toothpaste tubes in Charleston WV, filling them with plaster, and displaying the final collection in public.
+    </p>
+  </section>
+
+  <!-- CONVERGENCE ANIMATION -->
+  <section class="convergence-section">
+    <div class="convergence-container">
+      <div class="map-bg"></div>
+      <canvas id="convergence"></canvas>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps-section fade-in">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number" style="color: #3edab7">01</div>
+        <h3>Squeeze</h3>
+        <p>Finish your toothpaste like you normally would.</p>
+      </div>
+      <div class="step">
+        <div class="step-number" style="color: #3ea8da">02</div>
+        <h3>Sign</h3>
+        <p>Write whatever you want on the tube with a Sharpie (your name, a message, a doodle).</p>
+      </div>
+      <div class="step">
+        <div class="step-number" style="color: #da3e7b">03</div>
+        <h3>Donate</h3>
+        <p>Email us at hello@emptytoothpastetubes.com and we'll come get it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TUBE GRID -->
+  <section class="grid-section fade-in">
+    <h2>The Collection</h2>
+    <p class="grid-subtitle">Tubes collected as of <span id="collection-date"></span>...</p>
+    <div id="tube-grid-container"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section fade-in">
+    <h2>Got an empty tube?</h2>
+    <p>That empty tube laying around your bathroom? Waaaaaaait! Don't throw it out! Give it to us instead.</p>
+    <a class="cta-button" href="mailto:hello@emptytoothpastetubes.com">Donate a Tube</a>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section fade-in">
+    <h2>Questions</h2>
+
+    <div class="faq-item">
+      <h3>What kind of tubes do you accept?</h3>
+      <p>Any brand, any size. Travel tubes, family-sized tubes, whatever. The more variety the better. Just make sure it's actually empty.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Where will they be displayed?</h3>
+      <p>Somewhere in Charleston, West Virginia. Once we've collected and filled all the tubes with plaster, they will be displayed.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I write something on my tube?</h3>
+      <p>Yes. Grab a Sharpie and write your name, a date, a message, a drawing — whatever you want. It becomes part of the collection.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does it need the cap?</h3>
+      <p>Caps are good. If it still has the cap, leave it on.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is this serious?</h3>
+      <p>Yes, it is very serious.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Empty Toothpaste Tubes &mdash; Charleston, WV</p>
+  </footer>
+
+  <script>
+    // Load tube data and render
+    async function loadTubes() {
+      try {
+        const res = await fetch('tubes.json');
+        const data = await res.json();
+        return data;
+      } catch (e) {
+        return { tubes: [] };
+      }
+    }
+
+    // Animate counter
+    function animateCounter(target) {
+      const el = document.getElementById('counter');
+      const duration = 1500;
+      const start = performance.now();
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Build the tube grid or empty state
+    function renderGrid(tubes) {
+      const container = document.getElementById('tube-grid-container');
+
+      if (tubes.length === 0) {
+        container.innerHTML = `
+          <div class="empty-grid">
+            <div class="empty-grid-visual" id="ghost-grid"></div>
+            <p>No tubes collected yet. This grid will fill up one tube at a time. Be the first.</p>
+          </div>
+        `;
+        // Give each ghost tile its own random dance
+        const ghostGrid = document.getElementById('ghost-grid');
+        for (let i = 0; i < 15; i++) {
+          const tile = document.createElement('div');
+          tile.className = 'ghost-tile';
+          const r = () => (Math.random() * 8 - 4).toFixed(1);
+          const rd = () => (Math.random() * 3 - 1.5).toFixed(2);
+          tile.style.setProperty('--gx1', r() + 'px');
+          tile.style.setProperty('--gy1', r() + 'px');
+          tile.style.setProperty('--gr1', rd() + 'deg');
+          tile.style.setProperty('--gx2', r() + 'px');
+          tile.style.setProperty('--gy2', r() + 'px');
+          tile.style.setProperty('--gr2', rd() + 'deg');
+          tile.style.setProperty('--gx3', r() + 'px');
+          tile.style.setProperty('--gy3', r() + 'px');
+          tile.style.setProperty('--gr3', rd() + 'deg');
+          tile.style.setProperty('--gs-dur', (4 + Math.random() * 4).toFixed(1) + 's');
+          tile.style.setProperty('--gs-del', (Math.random() * -6).toFixed(1) + 's');
+          ghostGrid.appendChild(tile);
+        }
+        return;
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'tube-grid';
+
+      tubes.forEach(tube => {
+        const card = document.createElement('div');
+        card.className = 'tube-card';
+
+        // Random shuffle values so each card dances differently
+        const r = () => (Math.random() * 6 - 3).toFixed(1);
+        const rd = () => (Math.random() * 1.6 - 0.8).toFixed(2);
+        card.style.setProperty('--dx1', r() + 'px');
+        card.style.setProperty('--dy1', r() + 'px');
+        card.style.setProperty('--dr1', rd() + 'deg');
+        card.style.setProperty('--dx2', r() + 'px');
+        card.style.setProperty('--dy2', r() + 'px');
+        card.style.setProperty('--dr2', rd() + 'deg');
+        card.style.setProperty('--dx3', r() + 'px');
+        card.style.setProperty('--dy3', r() + 'px');
+        card.style.setProperty('--dr3', rd() + 'deg');
+        card.style.setProperty('--shuffle-duration', (5 + Math.random() * 4).toFixed(1) + 's');
+        card.style.setProperty('--shuffle-delay', (Math.random() * -8).toFixed(1) + 's');
+
+        card.innerHTML = `
+          <img src="tubes/${tube.image}" alt="Tube #${tube.number}" loading="lazy">
+          <div class="tube-info">
+            #${tube.number}${tube.donor ? ' &mdash; ' + tube.donor : ''}
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          const lb = document.getElementById('lightbox');
+          lb.querySelector('img').src = `tubes/${tube.image}`;
+          document.getElementById('lightbox-info').textContent =
+            `#${tube.number}${tube.donor ? ' — ' + tube.donor : ''}`;
+          lb.classList.add('active');
+        });
+
+        grid.appendChild(card);
+      });
+
+      container.appendChild(grid);
+    }
+
+    // Marquee text
+    function buildMarquee(count) {
+      // Generative brushing moments & thoughts
+      const days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+      const times = ['6:12am','6:47am','7:03am','7:15am','7:31am','7:44am','9:58am','10:30am','11:14pm','11:47pm','10:22pm','9:38pm','11:59pm','12:04am','6:55am','8:12am'];
+
+      const situations = [
+        'running late again',
+        'couldn\'t sleep',
+        'first day at the new job',
+        'nothing on the schedule',
+        'big interview in an hour',
+        'kids already screaming',
+        'snow day',
+        'last day of summer',
+        'forgot to buy milk',
+        'rent is due tomorrow',
+        'thinking about absolutely nothing',
+        'dog is staring at me',
+        'someone\'s mowing their lawn already',
+        'wondering if the car will start',
+        'coffee isn\'t ready yet',
+        'late night, early morning',
+        'playoff game tonight',
+        'forgot her birthday',
+        'just got home from the ER',
+        'still half asleep',
+        'hungover',
+        'excited about nothing in particular',
+        'should probably call in sick',
+        'pajamas all day',
+        'third cup of coffee',
+        'haven\'t checked the phone yet',
+        'storm knocked the power out last night',
+        'moving day',
+        'can\'t find the other shoe',
+        'road trip in two hours',
+        '{name} is picking me up in ten',
+        'dinner at {name}\'s tonight',
+        '{name} just called twice',
+      ];
+
+      const names = ['Sara','Mike','Jordan','Chris','Pat','Danny','Alex','Sam','Ray','Kelly','Jamie','Casey','Morgan','Taylor','Jesse','Drew','Lee','Nate','Eli','Quinn'];
+
+      const thoughts = [
+        'did i lock the front door',
+        'i should call my mom',
+        'what year did the titanic sink',
+        'i need new socks',
+        'is it recycling week',
+        'that dream was so weird',
+        'i wonder what\'s for lunch',
+        'when did i last change the oil',
+        'i should start running again',
+        'where did i put my keys',
+        'how long have i had this toothbrush',
+        'is the milk still good',
+        'i should learn to cook',
+        'what time does the post office close',
+        'i haven\'t been to the dentist in a while',
+        'why is the bathroom light flickering',
+        'i think i left the oven on',
+        'do i have any clean shirts',
+        'what was that noise',
+        'i should text {name} back',
+        'the faucet is still dripping',
+        'do i actually like this toothpaste',
+        'when was the last time i flossed',
+        'i should drink more water',
+        'what day is it even',
+        'i need to return that thing',
+        'is 10pm too late to eat cereal',
+        'the ceiling has a crack i never noticed',
+        'wonder how many times i\'ve done this',
+        'i should really go to bed earlier',
+        'i owe {name} twenty bucks',
+        'wonder what {name} is up to',
+        '{name} never texted me back',
+        'i told {name} i\'d be there by eight',
+        'did {name} ever fix that thing',
+      ];
+
+      // Shuffle helper
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+      // Generate a mix of phrase types
+      const generated = [];
+      const shuffledSituations = shuffle(situations);
+      const shuffledThoughts = shuffle(thoughts);
+
+      for (let i = 0; i < 30; i++) {
+        const type = Math.random();
+        if (type < 0.4) {
+          // Timestamp moment: "tuesday 6:47am — running late"
+          generated.push(`${pick(days)} ${pick(times)} — ${shuffledSituations[i % shuffledSituations.length]}`);
+        } else if (type < 0.8) {
+          // Stray thought
+          generated.push(shuffledThoughts[i % shuffledThoughts.length]);
+        } else {
+          // Simple stat or fact
+          const facts = [
+            `${count} tubes and counting`,
+            'charleston, wv',
+            'plaster of paris',
+            'squeeze, sign, donate',
+          ];
+          generated.push(pick(facts));
+        }
+      }
+
+      // Replace {name} placeholders with random names
+      const filled = shuffle(generated).map(s => s.replace(/\{name\}/g, () => pick(names)));
+      const marqueeStr = (filled.join(' · ') + ' · ').repeat(2);
+      document.getElementById('marquee-text').textContent = marqueeStr;
+    }
+
+    // Fade-in on scroll
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }
+
+    // Init
+    loadTubes().then(data => {
+      const count = data.tubes.length;
+
+      animateCounter(count);
+      buildMarquee(count);
+      renderGrid(data.tubes);
+    });
+
+    // Set collection date
+    const dateEl = document.getElementById('collection-date');
+    const now = new Date();
+    dateEl.textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+    initScrollAnimations();
+
+    // ---- CONVERGENCE ANIMATION ----
+    (function() {
+      const cvs = document.getElementById('convergence');
+      const cctx = cvs.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      let cW, cH, ccx, ccy;
+
+      function cResize() {
+        const rect = cvs.parentElement.getBoundingClientRect();
+        cW = rect.width;
+        cH = rect.height;
+        cvs.width = cW * dpr;
+        cvs.height = cH * dpr;
+        cctx.scale(dpr, dpr);
+        ccx = cW / 2;
+        ccy = cH / 2;
+      }
+      cResize();
+      window.addEventListener('resize', cResize);
+
+      const tubeSrcs = [
+        'animation/tube-1.png', 'animation/tube-2.png', 'animation/tube-3.png',
+        'animation/tube-4.png', 'animation/tube-5.png', 'animation/tube-6.png',
+      ];
+      const tubeImages = [];
+      let tubesLoaded = 0;
+      tubeSrcs.forEach(src => {
+        const img = new Image();
+        img.onload = () => { tubesLoaded++; };
+        img.src = src;
+        tubeImages.push(img);
+      });
+
+      const NUM_DOTS = 90;
+      const CIRCLE_RADIUS = 0.46;
+      const BREATHE_CYCLE_MS = 1167;
+      const BREATHE_AMPLITUDE = 0.045;
+
+      function generateDots() {
+        const dots = [];
+        for (let i = 0; i < NUM_DOTS; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const dist = Math.random() * 0.42;
+          dots.push({
+            x: 0.5 + Math.cos(angle) * dist,
+            y: 0.5 + Math.sin(angle) * dist,
+            size: 24 + Math.random() * 14,
+            imgIndex: Math.floor(Math.random() * tubeSrcs.length),
+            rotation: (Math.random() - 0.5) * 0.6,
+            rotSpeed: (Math.random() - 0.5) * 0.0003,
+            phase: Math.random() * Math.PI * 2,
+            driftX: (Math.random() - 0.5) * 0.0002,
+            driftY: (Math.random() - 0.5) * 0.0002,
+          });
+        }
+        return dots;
+      }
+
+      const dots = generateDots();
+
+      function animate(now) {
+        cctx.clearRect(0, 0, cW, cH);
+        if (tubesLoaded < tubeSrcs.length) { requestAnimationFrame(animate); return; }
+
+        const radius = CIRCLE_RADIUS;
+
+        // Circle outline (hidden — keeping boundary logic only)
+        // cctx.beginPath();
+        // cctx.arc(ccx, ccy, circleRadiusPx, 0, Math.PI * 2);
+        // cctx.strokeStyle = 'rgba(240, 247, 244, 0.2)';
+        // cctx.lineWidth = 1.5;
+        // cctx.stroke();
+
+        // Tubes — drift and stay inside the breathing circle
+        for (const dot of dots) {
+          dot.x += dot.driftX;
+          dot.y += dot.driftY;
+          dot.rotation += dot.rotSpeed;
+
+          // Bounce off circle boundary
+          const dx = dot.x - 0.5;
+          const dy = dot.y - 0.5;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          const maxDist = radius - 0.03;
+          if (maxDist > 0 && d > maxDist) {
+            dot.x = 0.5 + (dx / d) * maxDist;
+            dot.y = 0.5 + (dy / d) * maxDist;
+            dot.driftX *= -1;
+            dot.driftY *= -1;
+          }
+
+          const pulse = 1 + Math.sin(now * 0.002 + dot.phase) * 0.12;
+          const s = dot.size * pulse;
+
+          if (s > 1) {
+            const img = tubeImages[dot.imgIndex];
+            const aspect = img.naturalWidth / img.naturalHeight;
+            cctx.save();
+            cctx.translate(dot.x * cW, dot.y * cH);
+            cctx.rotate(dot.rotation);
+            cctx.globalAlpha = Math.min(1, 0.7 + pulse * 0.15);
+            cctx.drawImage(img, -s * aspect / 2, -s / 2, s * aspect, s);
+            cctx.restore();
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    })();
+
+    // Lightbox close (element is after script tag, so defer)
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const lb = document.getElementById('lightbox');
+        if (lb) lb.classList.remove('active');
+      }
+    });
+  </script>
+  <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+    <img src="" alt="" onclick="event.stopPropagation()">
+    <div class="lightbox-info" id="lightbox-info"></div>
+  </div>
+</body>
+</html>
