@@ -519,8 +519,6 @@
 
     .marquee-track {
       display: flex;
-      width: max-content;
-      animation: marquee 90s linear infinite;
       will-change: transform;
     }
 
@@ -531,11 +529,7 @@
       letter-spacing: 0.3em;
       opacity: 0.2;
       flex-shrink: 0;
-    }
-
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      white-space: nowrap;
     }
 
     /* ---- ANIMATIONS ---- */
@@ -940,8 +934,24 @@
       // Replace {name} placeholders with random names
       const filled = shuffle(generated).map(s => s.replace(/\{name\}/g, () => pick(names)));
       const marqueeStr = filled.join(' · ') + ' · ';
-      document.getElementById('marquee-a').textContent = marqueeStr;
-      document.getElementById('marquee-b').textContent = marqueeStr;
+      const spanA = document.getElementById('marquee-a');
+      const spanB = document.getElementById('marquee-b');
+      spanA.textContent = marqueeStr;
+      spanB.textContent = marqueeStr;
+
+      // Measure one span's width and animate with pixels (Safari-safe)
+      requestAnimationFrame(() => {
+        const w = spanA.offsetWidth;
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-${w}px); }
+          }
+        `;
+        document.head.appendChild(style);
+        document.getElementById('marquee-track').style.animation = 'marquee 90s linear infinite';
+      });
     }
 
     // Fade-in on scroll
