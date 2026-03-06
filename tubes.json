@@ -1,16 +1,10 @@
 {
   "tubes": [
-    { "number": 1, "image": "placeholder.svg", "donor": "Mike" },
-    { "number": 2, "image": "placeholder.svg", "donor": "Sara" },
-    { "number": 3, "image": "placeholder.svg", "donor": "Dave" },
-    { "number": 4, "image": "placeholder.svg", "donor": "Jess" },
-    { "number": 5, "image": "placeholder.svg", "donor": "Tommy" },
-    { "number": 6, "image": "placeholder.svg", "donor": "Rachel" },
-    { "number": 7, "image": "placeholder.svg", "donor": "Chris" },
-    { "number": 8, "image": "placeholder.svg", "donor": "Nina" },
-    { "number": 9, "image": "placeholder.svg", "donor": "Pat" },
-    { "number": 10, "image": "placeholder.svg", "donor": "Lou" },
-    { "number": 11, "image": "placeholder.svg", "donor": "Kim" },
-    { "number": 12, "image": "placeholder.svg", "donor": "Hank" }
+    { "number": 6, "image": "hegseth.webp", "donor": "" },
+    { "number": 5, "image": "jazzjeff.webp", "donor": "" },
+    { "number": 4, "image": "pizza_pizza.webp", "donor": "" },
+    { "number": 3, "image": "sensodyne_1.webp", "donor": "" },
+    { "number": 2, "image": "colgate_mini.webp", "donor": "" },
+    { "number": 1, "image": "OR.webp", "donor": "" }
   ]
 }

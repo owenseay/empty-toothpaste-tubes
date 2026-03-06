@@ -251,6 +251,10 @@
         max-width: 400px;
         margin: 0 auto;
       }
+
+      .tube-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     @media (max-width: 600px) {
@@ -265,6 +269,10 @@
 
       .steps {
         grid-template-columns: 1fr;
+      }
+
+      .tube-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -321,9 +329,9 @@
 
     .tube-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 4px;
-      max-width: 1200px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
@@ -333,6 +341,11 @@
       border-radius: 4px;
       position: relative;
       cursor: pointer;
+      background: rgba(0,0,0,0.08);
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(0);
       animation: cardShuffle var(--shuffle-duration, 6s) ease-in-out var(--shuffle-delay, 0s) infinite;
     }
 
@@ -585,6 +598,28 @@
       opacity: 0.6;
       color: #f0f7f4;
     }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(240, 247, 244, 0.5);
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.2s;
+      font-family: 'Space Mono', monospace;
+      z-index: 1001;
+    }
+
+    .lightbox-arrow:hover {
+      color: rgba(240, 247, 244, 0.9);
+    }
+
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
   </style>
 </head>
 <body>
@@ -618,7 +653,7 @@
   <section class="video-section fade-in">
     <h2>The Tubes</h2>
     <div class="video-wrapper">
-      <video controls preload="metadata">
+      <video controls preload="metadata" poster="video-poster.svg">
         <source src="empty-toothpaste-tubes-compressed.mp4" type="video/mp4">
         Your browser doesn't support video.
       </video>
@@ -684,30 +719,43 @@
     </div>
 
     <div class="faq-item">
-      <h3>Will the tubes be displayed?</h3>
-      <p>Yes. Once we've collected and filled all the tubes with plaster, the final masterpiece will be displayed somewhere in Charleston, West Virginia.</p>
+      <h3>Can I write something on my tube?</h3>
+      <p>Yes. Grab a Sharpie and write your name, a date, a message, a drawing...whatever you want. It's your tube.</p>
     </div>
 
     <div class="faq-item">
-      <h3>Can I write something on my tube?</h3>
-      <p>Yes. Grab a Sharpie and write your name, a date, a message, a drawing...whatever you want. It's your tube.</p>
+      <h3>Will the tubes be displayed?</h3>
+      <p>Yes. Once we've collected and filled all the tubes with plaster, the final masterpiece will be displayed somewhere in Charleston, West Virginia.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>Empty Toothpaste Tubes &mdash; Charleston, WV</p>
+    <p style="margin-top: 0.5rem;">An <a href="https://owenseay.com" target="_blank" rel="noopener">Owen</a> vibe project.</p>
   </footer>
 
   <script>
-    // Load tube data and render
+    // Tube data fallback for local file:// access
+    const TUBE_DATA = {
+      tubes: [
+        { number: 6, image: "hegseth.webp", donor: "" },
+        { number: 5, image: "jazzjeff.webp", donor: "" },
+        { number: 4, image: "pizza_pizza.webp", donor: "" },
+        { number: 3, image: "sensodyne_1.webp", donor: "" },
+        { number: 2, image: "colgate_mini.webp", donor: "" },
+        { number: 1, image: "OR.webp", donor: "" }
+      ]
+    };
+
+    // Try fetch first (works on server), fall back to embedded data (works locally)
     async function loadTubes() {
       try {
         const res = await fetch('tubes.json');
         const data = await res.json();
         return data;
       } catch (e) {
-        return { tubes: [] };
+        return TUBE_DATA;
       }
     }
 
@@ -767,7 +815,7 @@
       const grid = document.createElement('div');
       grid.className = 'tube-grid';
 
-      tubes.forEach(tube => {
+      tubes.forEach((tube, index) => {
         const card = document.createElement('div');
         card.className = 'tube-card';
 
@@ -794,11 +842,8 @@
         `;
 
         card.addEventListener('click', () => {
-          const lb = document.getElementById('lightbox');
-          lb.querySelector('img').src = `tubes/${tube.image}`;
-          document.getElementById('lightbox-info').textContent =
-            `#${tube.number}${tube.donor ? ' — ' + tube.donor : ''}`;
-          lb.classList.add('active');
+          currentLightboxIndex = index;
+          showLightbox(index);
         });
 
         grid.appendChild(card);
@@ -962,8 +1007,27 @@
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }
 
+    // Lightbox navigation
+    let currentLightboxIndex = 0;
+    let currentTubes = [];
+
+    function showLightbox(index) {
+      const tube = currentTubes[index];
+      const lb = document.getElementById('lightbox');
+      lb.querySelector('img').src = `tubes/${tube.image}`;
+      document.getElementById('lightbox-info').textContent =
+        `#${tube.number}${tube.donor ? ' — ' + tube.donor : ''}`;
+      lb.classList.add('active');
+    }
+
+    function navigateLightbox(dir) {
+      currentLightboxIndex = (currentLightboxIndex + dir + currentTubes.length) % currentTubes.length;
+      showLightbox(currentLightboxIndex);
+    }
+
     // Init
     loadTubes().then(data => {
+      currentTubes = data.tubes;
       const count = data.tubes.length;
 
       animateCounter(count);
@@ -986,15 +1050,18 @@
       }
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const lb = document.getElementById('lightbox');
-        if (lb) lb.classList.remove('active');
-      }
+      const lb = document.getElementById('lightbox');
+      if (!lb || !lb.classList.contains('active')) return;
+      if (e.key === 'Escape') lb.classList.remove('active');
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
     });
   </script>
   <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+    <button class="lightbox-arrow lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">&#8592;</button>
     <img src="" alt="" onclick="event.stopPropagation()">
     <div class="lightbox-info" id="lightbox-info"></div>
+    <button class="lightbox-arrow lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">&#8594;</button>
   </div>
 </body>
 </html>
