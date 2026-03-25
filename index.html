@@ -470,6 +470,78 @@
       box-shadow: 0 6px 30px rgba(43, 184, 154, 0.3);
     }
 
+    /* ---- CONTACT FORM ---- */
+    .contact-form {
+      max-width: 500px;
+      margin: 2rem auto 0;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      color: var(--white);
+      background: rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(43, 184, 154, 0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      opacity: 0.35;
+    }
+
+    .form-status {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .form-status.visible {
+      opacity: 1;
+    }
+
+    .form-status.success {
+      color: var(--accent);
+    }
+
+    .form-status.error {
+      color: #da3e7b;
+    }
+
     /* ---- FAQ ---- */
     .faq-section {
       padding: 6rem 2rem;
@@ -643,9 +715,8 @@
   <!-- COUNTER -->
   <section class="counter-section fade-in">
     <div class="counter-container">
-      <div class="counter-label">Tubes Collected</div>
       <div class="counter-number" id="counter">0</div>
-      <div class="counter-goal">tubes</div>
+      <div class="counter-goal">tubes collected</div>
     </div>
   </section>
 
@@ -664,30 +735,43 @@
   <section class="about-section fade-in">
     <h2>What is this?</h2>
     <p>
-      We're collecting all the empty toothpaste tubes in Charleston WV, filling them with plaster, and then building something with them.
+      Hi, I'm Owen and I realize it's kind of an odd thing to request but if you happen to have an empty toothpaste tube laying around your bathroom&mdash;I need you to give it to me instead of throwing it in your garbage.
     </p>
-  </section>
-
-  <!-- STEPS -->
-  <section class="steps-section fade-in">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number" style="color: #3edab7">01</div>
-        <h3>Squeeze</h3>
-        <p>Finish your toothpaste like you normally would.</p>
+    <p>
+      You see, for no particular reason, I was recently conducting a few experiments with Plaster of Paris to see what kinds of things you could do with it. At the time, I also had an empty toothpaste tube sitting in my bathroom so I poured plaster into it and the whole thing got hard as a rock, which I thought was kind of neat. I mean it just looks like a regular tube of toothpaste sitting there, but then you go to pick it up and you realize it doesn't feel the way you would expect it to.
+    </p>
+    <p>
+      So after that I started to wonder&hellip;what if you got a whole bunch of empty tubes together in a room and filled them all with plaster? How many could you collect? How would go about filling them all and then what would you do with a bunch of rock hard toothpaste tubes? How would you display them? A big pile? On a wall? What would it smell like?
+    </p>
+    <p>
+      And so these are the questions I now seek to answer and the only way I can do that is if you give me your empty toothpaste tube. We both know you're just going to toss it in the garbage once it gets down to that last little bit so what's the big deal? Just fill out the form down below and I'll come pick it up. You can even just leave it out at the end of your driveway if you want. Just remember to write something on it with a Sharpie because depending how they eventually get displayed you might be able to identify your tube later.
+    </p>
+    <p>
+      And if you have more than one tube then that's even better. Get your friends tubes and your neighbors tubes too.
+    </p>
+    <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="498773a1-8513-417e-923f-2b6ad2b754bd">
+      <input type="hidden" name="subject" value="New tube donation from emptytoothpastetubes.com">
+      <input type="checkbox" name="botcheck" style="display: none;">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
       </div>
-      <div class="step">
-        <div class="step-number" style="color: #3ea8da">02</div>
-        <h3>Sign</h3>
-        <p>Write whatever you want on the tube with a Sharpie (your name, a message, a doodle).</p>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
       </div>
-      <div class="step">
-        <div class="step-number" style="color: #da3e7b">03</div>
-        <h3>Donate</h3>
-        <p>Email us at hello@emptytoothpastetubes.com and we'll come get it.</p>
+      <div class="form-group">
+        <label for="phone">Phone <span style="opacity: 0.4; text-transform: none; letter-spacing: 0;">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="(304) 555-1234">
       </div>
-    </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="I've got a tube for you..." required></textarea>
+      </div>
+      <button type="submit" class="cta-button" id="submit-btn">Send It</button>
+      <div class="form-status" id="form-status"></div>
+    </form>
   </section>
 
   <!-- TUBE GRID -->
@@ -697,20 +781,13 @@
     <div id="tube-grid-container"></div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section fade-in">
-    <h2>Got an empty tube?</h2>
-    <p>That empty tube laying around your bathroom? Waaaaaaait! Don't throw it out! Give it to us instead.</p>
-    <a class="cta-button" href="mailto:hello@emptytoothpastetubes.com">Donate a Tube</a>
-  </section>
-
   <!-- FAQ -->
   <section class="faq-section fade-in">
     <h2>Questions</h2>
 
     <div class="faq-item">
       <h3>What kind of tubes do you accept?</h3>
-      <p>Any brand, any size. Travel tubes, family-sized tubes, whatever. The more variety the better. Just make sure it's actually empty.</p>
+      <p>Any brand, any size. Travel tubes, family-sized tubes, whatever. Just make sure it's actually empty.</p>
     </div>
 
     <div class="faq-item">
@@ -730,14 +807,19 @@
 
     <div class="faq-item">
       <h3>Has this been done before?</h3>
-      <p>No. This is a first.</p>
+      <p>No. It's a first.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is this some sort of political movement?</h3>
+      <p>No.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>Empty Toothpaste Tubes &mdash; Charleston, WV</p>
-    <p style="margin-top: 0.5rem;">An <a href="https://owenseay.com" target="_blank" rel="noopener">Owen</a> vibe project.</p>
+    <p style="margin-top: 0.5rem;">A tubular <a href="https://owenseay.com" target="_blank" rel="noopener">Owen</a> project.</p>
   </footer>
 
   <script>
@@ -1046,6 +1128,40 @@
     dateEl.textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
     initScrollAnimations();
+
+    // Contact form submission
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const status = document.getElementById('form-status');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            status.textContent = 'Got it! We\'ll be in touch.';
+            status.className = 'form-status visible success';
+            form.reset();
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (err) {
+          status.textContent = 'Something went wrong. Try emailing hello@emptytoothpastetubes.com instead.';
+          status.className = 'form-status visible error';
+        }
+
+        btn.textContent = 'Send It';
+        btn.disabled = false;
+      });
+    }
 
     // Lightbox close (element is after script tag, so defer)
     document.addEventListener('DOMContentLoaded', () => {
