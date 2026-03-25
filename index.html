@@ -177,7 +177,7 @@
 
     /* ---- WHAT IS THIS ---- */
     .about-section {
-      padding: 6rem 2rem;
+      padding: 6rem 2rem 3rem;
       max-width: 700px;
       margin: 0 auto;
     }
@@ -232,6 +232,10 @@
 
       .scroll-hint {
         display: none;
+      }
+
+      .counter-section {
+        padding: 2rem 2rem;
       }
 
       .video-section {
@@ -308,7 +312,7 @@
 
     /* ---- TUBE GRID ---- */
     .grid-section {
-      padding: 4rem 2rem;
+      padding: 2rem 2rem;
     }
 
     .grid-section h2 {
@@ -716,7 +720,8 @@
   <section class="counter-section fade-in">
     <div class="counter-container">
       <div class="counter-number" id="counter">0</div>
-      <div class="counter-goal">tubes collected as of <span id="counter-date"></span></div>
+      <div class="counter-goal">tubes collected</div>
+      <div class="counter-label" id="counter-date"></div>
     </div>
   </section>
 
@@ -803,11 +808,6 @@
     <div class="faq-item">
       <h3>Will the tubes be displayed?</h3>
       <p>Yes. Once we've collected and filled all the tubes with plaster, the final masterpiece will be displayed somewhere in Charleston, West Virginia.</p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Has this been done before?</h3>
-      <p>No. It's a first.</p>
     </div>
 
     <div class="faq-item">
@@ -1126,7 +1126,7 @@
     const now = new Date();
     const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     document.getElementById('collection-date').textContent = dateStr;
-    document.getElementById('counter-date').textContent = dateStr;
+    document.getElementById('counter-date').textContent = 'as of ' + dateStr;
 
     initScrollAnimations();
 
