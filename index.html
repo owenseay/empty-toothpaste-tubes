@@ -716,7 +716,7 @@
   <section class="counter-section fade-in">
     <div class="counter-container">
       <div class="counter-number" id="counter">0</div>
-      <div class="counter-goal">tubes collected</div>
+      <div class="counter-goal">tubes collected as of <span id="counter-date"></span></div>
     </div>
   </section>
 
@@ -1122,10 +1122,11 @@
       renderGrid(data.tubes);
     });
 
-    // Set collection date
-    const dateEl = document.getElementById('collection-date');
+    // Set dates
     const now = new Date();
-    dateEl.textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    document.getElementById('collection-date').textContent = dateStr;
+    document.getElementById('counter-date').textContent = dateStr;
 
     initScrollAnimations();
 
