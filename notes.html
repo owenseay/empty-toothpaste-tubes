@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes — Empty Toothpaste Tubes</title>
+  <link rel="icon" type="image/webp" href="tube-no-bg.webp">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --white: #0d1b1a;
+      --black: #f0f7f4;
+      --plaster: #dce8e2;
+      --accent: #2bb89a;
+      --accent-dark: #1f9a7e;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* -- header -- */
+    .notes-header {
+      padding: 3rem 2rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: opacity 0.2s;
+    }
+
+    .back-link:hover { opacity: 0.6; }
+
+    .notes-header h1 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .notes-header .subtitle {
+      font-size: 1rem;
+      opacity: 0.5;
+      margin-top: 0.75rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    /* -- grid -- */
+    .notes-grid {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      grid-auto-flow: dense;
+    }
+
+    @media (max-width: 800px) {
+      .notes-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .notes-grid { grid-template-columns: 1fr; }
+    }
+
+    /* -- note card -- */
+    .note {
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+
+    .note.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 500px) {
+      .note.wide { grid-column: span 1; }
+    }
+
+    .note:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .note-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .note-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+      margin-right: 4px;
+    }
+
+    .tag-collect { background: rgba(43, 184, 154, 0.12); color: var(--accent); }
+    .tag-display { background: rgba(62, 168, 218, 0.12); color: #3ea8da; }
+    .tag-fill { background: rgba(218, 62, 123, 0.12); color: #da3e7b; }
+
+    .note h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .note p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0.75;
+      margin-bottom: 0.75rem;
+    }
+
+    .note p:last-child { margin-bottom: 0; }
+
+    .note img {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .note video {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* -- footer -- */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      opacity: 0.3;
+    }
+
+    footer a { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <div class="notes-header">
+    <a class="back-link" href="index.html">&larr; Back</a>
+    <h1>Notes</h1>
+    <p class="subtitle">Thoughts, updates, questions, and random stuff about collecting empty toothpaste tubes.</p>
+  </div>
+
+  <div class="notes-grid">
+
+    <!-- ==== ADD NEW NOTES HERE — newest first ==== -->
+
+    <!-- EXAMPLE: Text note -->
+    <div class="note" id="how-many">
+      <div class="note-date">March 25, 2026</div>
+      <span class="note-tag tag-collect">collect</span>
+      <h2>How many could you actually collect?</h2>
+      <p>Charleston has about 47,000 people. If the average person goes through maybe 4 tubes a year, that's 188,000 tubes floating around this city annually. Most of those are going straight into the garbage. Even if I got 1% of them that's almost 2,000 tubes.</p>
+    </div>
+
+    <!-- EXAMPLE: Concern -->
+    <div class="note" id="filling">
+      <div class="note-date">March 25, 2026</div>
+      <span class="note-tag tag-fill">fill</span>
+      <h2>How would you fill them all?</h2>
+      <p>One tube at a time is fine when you have six. But what about sixty? Or six hundred? Need to figure out a system. Maybe a funnel rig. Maybe a big batch of plaster and an assembly line. This is going to get messy.</p>
+    </div>
+
+    <!-- EXAMPLE: Idea -->
+    <div class="note" id="display">
+      <div class="note-date">March 25, 2026</div>
+      <span class="note-tag tag-display">display</span>
+      <h2>How would you display them?</h2>
+      <p>A big pile would be the simplest but feels lazy. A wall mount could look cool — rows and rows of tubes like a mosaic. Or maybe some kind of structure, like building blocks. What if you could build a chair out of them? A wall? Depends how many we end up with.</p>
+    </div>
+
+    <!-- ==== TEMPLATE — copy and paste to add a new note ====
+
+    <div class="note" id="your-anchor-id">
+      <div class="note-date">Month Day, Year</div>
+      <span class="note-tag tag-collect">collect</span>
+      <h2>Title</h2>
+      <p>Your text here.</p>
+    </div>
+
+    For photos, add: <img src="path/to/image.jpg" alt="description">
+    For videos, add: <video controls><source src="path/to/video.mp4" type="video/mp4"></video>
+    For wide notes, use: class="note wide"
+    Tag options: tag-collect, tag-display, tag-fill
+
+    ==== -->
+
+  </div>
+
+  <footer>
+    <p>Empty Toothpaste Tubes &mdash; Charleston, WV</p>
+    <p style="margin-top: 0.5rem;">A tubular <a href="https://owenseay.com" target="_blank" rel="noopener">Owen</a> project.</p>
+  </footer>
+
+</body>
+</html>
