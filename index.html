@@ -781,8 +781,6 @@
 
   <!-- TUBE GRID -->
   <section class="grid-section fade-in">
-    <h2>The Collection</h2>
-    <p class="grid-subtitle">Tubes collected as of <span id="collection-date"></span>...</p>
     <div id="tube-grid-container"></div>
   </section>
 
@@ -798,6 +796,11 @@
     <div class="faq-item">
       <h3>Does it need the cap?</h3>
       <p>Caps are good. If it still has the cap, leave it on.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do I have to pay anything for this?</h3>
+      <p>No it's completely free.</p>
     </div>
 
     <div class="faq-item">
@@ -979,9 +982,40 @@
         '{name} is picking me up in ten',
         'dinner at {name}\'s tonight',
         '{name} just called twice',
+        'alarm didn\'t go off',
+        'first snow of the year',
+        'laundry has been in the dryer for two days',
+        'neighbors are being loud again',
+        'groceries still in the car',
+        'dentist appointment at nine',
+        'forgot my lunch on the counter',
+        'cat knocked something over at 3am',
+        'power bill came in',
+        'the wi-fi is out again',
+        'someone parked in my spot',
+        'left the windows down and it rained',
+        'gas light has been on since yesterday',
+        'birthday tomorrow',
+        'last day before vacation',
+        'first morning in the new apartment',
+        'waiting on a callback',
+        'just got off a twelve hour shift',
+        'the hot water is out',
+        'trash day and i almost forgot',
+        'school is cancelled',
+        'haven\'t left the house in three days',
+        'vet appointment at noon',
+        'car won\'t pass inspection',
+        'paycheck finally hit',
+        'the smoke detector is chirping',
+        'package says delivered but it\'s not here',
+        '{name} is crashing on the couch tonight',
+        '{name} borrowed the car',
+        'watching {name}\'s dog this week',
+        '{name} wants to grab lunch',
       ];
 
-      const names = ['Sara','Mike','Jordan','Chris','Pat','Danny','Alex','Sam','Ray','Kelly','Jamie','Casey','Morgan','Taylor','Jesse','Drew','Lee','Nate','Eli','Quinn'];
+      const names = ['Sara','Mike','Jordan','Chris','Pat','Danny','Alex','Sam','Ray','Kelly','Jamie','Casey','Morgan','Taylor','Jesse','Drew','Lee','Nate','Eli','Quinn','Robin','Avery','Reese','Logan','Blake','Kendall','Skyler','Devon','Rory','Frankie','Corey','Toni','Dustin','Brenda','Gina','Marcus','Hank','Dale','Shawn','Terri'];
 
       const thoughts = [
         'did i lock the front door',
@@ -1019,6 +1053,43 @@
         '{name} never texted me back',
         'i told {name} i\'d be there by eight',
         'did {name} ever fix that thing',
+        'why do i always pick this toothpaste',
+        'how much toothpaste have i used in my life',
+        'i wonder if the neighbors can hear me',
+        'what if i just didn\'t go',
+        'is it too early to text someone',
+        'that song has been stuck in my head all day',
+        'i need to cancel that subscription',
+        'when did eggs get so expensive',
+        'i should clean the gutters',
+        'wonder what my dog thinks about all day',
+        'how does the mailman know where to go',
+        'is my check engine light still on',
+        'i should really learn to parallel park',
+        'why do i own so many mugs',
+        'i think that yogurt is expired',
+        'i should change the air filter',
+        'do people actually use the hotel gym',
+        'i wonder if {name} is awake',
+        'what would i do if i won the lottery',
+        'i should start a garden',
+        'this mirror needs cleaning',
+        'when was the last time i mopped',
+        'i never use the top shelf',
+        'why is there always one sock missing',
+        'i should fix that squeaky door',
+        'how old is this tube of toothpaste',
+        'there\'s a spider in the corner and i\'m choosing peace',
+        'what\'s the weather supposed to be today',
+        'i think my watch is slow',
+        'why do i have three half-used shampoo bottles',
+        'i should probably eat breakfast today',
+        'is it weird that i talk to myself',
+        'i need a haircut',
+        'wonder how many tubes of toothpaste i\'ve used',
+        'i bet {name} is still asleep',
+        '{name} owes me a coffee',
+        'i told {name} i\'d help them move',
       ];
 
       // Shuffle helper
@@ -1125,7 +1196,6 @@
     // Set dates
     const now = new Date();
     const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    document.getElementById('collection-date').textContent = dateStr;
     document.getElementById('counter-date').textContent = 'as of ' + dateStr;
 
     initScrollAnimations();
