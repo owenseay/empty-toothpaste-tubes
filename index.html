@@ -632,8 +632,8 @@
     const PHOTO_DATA = {
       tubeCount: 4,
       photos: [
-        { image: "tubes/first-set-of-tubes.JPG", caption: "" },
-        { image: "tubes/first-tubes-filled.png", caption: "" }
+        { image: "tubes/first-set-of-tubes.webp", caption: "" },
+        { image: "tubes/first-tubes-filled.webp", caption: "" }
       ]
     };
 
@@ -731,6 +731,13 @@
       lb.querySelector('img').src = photo.image;
       document.getElementById('lightbox-info').textContent = photo.caption || '';
       lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
     }
 
     function navigateLightbox(dir) {
@@ -791,18 +798,18 @@
     document.addEventListener('DOMContentLoaded', () => {
       const lightbox = document.getElementById('lightbox');
       if (lightbox) {
-        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+        lightbox.addEventListener('click', () => closeLightbox());
       }
     });
     document.addEventListener('keydown', (e) => {
       const lb = document.getElementById('lightbox');
       if (!lb || !lb.classList.contains('active')) return;
-      if (e.key === 'Escape') lb.classList.remove('active');
+      if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') navigateLightbox(-1);
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
   </script>
-  <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-arrow lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">&#8592;</button>
     <img src="" alt="" onclick="event.stopPropagation()">
     <div class="lightbox-info" id="lightbox-info"></div>

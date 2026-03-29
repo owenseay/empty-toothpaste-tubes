@@ -1,7 +1,7 @@
 {
   "tubeCount": 4,
   "photos": [
-    { "image": "tubes/first-set-of-tubes.JPG", "caption": "" },
-    { "image": "tubes/first-tubes-filled.png", "caption": "" }
+    { "image": "tubes/first-set-of-tubes.webp", "caption": "" },
+    { "image": "tubes/first-tubes-filled.webp", "caption": "" }
   ]
 }
