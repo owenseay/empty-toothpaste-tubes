@@ -12,162 +12,60 @@
   <meta property="og:url" content="https://emptytoothpastetubes.com">
   <link rel="icon" type="image/webp" href="tube-no-bg.webp">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap');
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --white: #0d1b1a;
-      --black: #f0f7f4;
-      --plaster: #dce8e2;
-      --accent: #2bb89a;
-      --accent-dark: #1f9a7e;
-    }
-
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Space Grotesk', sans-serif;
+      background: #fff;
+      color: #111;
+      font-family: Helvetica, Arial, sans-serif;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ---- HERO ---- */
     .hero {
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 2rem 7rem;
+      padding: 3rem 2rem 1.5rem;
       text-align: center;
-      position: relative;
-    }
-
-    .hero-logo {
-      width: clamp(200px, 35vw, 280px);
-      height: auto;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(0 4px 30px rgba(43, 184, 154, 0.3));
-      animation: floatTube 4s ease-in-out infinite;
-    }
-
-    @keyframes floatTube {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
 
     .hero h1 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-size: clamp(2.2rem, 7vw, 5rem);
       line-height: 1.05;
-      letter-spacing: -0.03em;
-      max-width: 900px;
+      letter-spacing: -0.02em;
+      font-weight: 700;
       text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: var(--accent);
     }
 
     .tagline {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
       margin-top: 1.5rem;
-      opacity: 0.7;
-      max-width: 500px;
+      color: #666;
+      max-width: 480px;
       line-height: 1.6;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      width: 24px;
-      height: 40px;
-      border: 2px solid rgba(0,0,0,0.3);
-      border-radius: 12px;
-      opacity: 0.5;
-    }
-
-    .scroll-hint::before {
-      content: '';
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      width: 4px;
-      height: 8px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 2px;
-      transform: translateX(-50%);
-      animation: scrollDot 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollDot {
-      0% { top: 6px; opacity: 1; }
-      70% { top: 22px; opacity: 0; }
-      100% { top: 6px; opacity: 0; }
-    }
-
-    /* ---- COUNTER ---- */
-    .counter-section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .counter-container {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .counter-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      opacity: 0.5;
-      margin-bottom: 1rem;
-    }
-
-    .counter-number {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(4rem, 15vw, 10rem);
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .counter-goal {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      opacity: 0.4;
-      margin-top: 0.5rem;
     }
 
     /* ---- VIDEO ---- */
     .video-section {
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .video-section h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
     .video-wrapper {
       width: 100%;
-      max-width: 700px;
-      border-radius: 12px;
+      max-width: 640px;
+      border-radius: 4px;
       overflow: hidden;
-      border: 2px solid rgba(0,0,0,0.12);
+      border: 1px solid #e0e0e0;
     }
 
     .video-wrapper video {
@@ -175,46 +73,72 @@
       display: block;
     }
 
-    /* ---- WHAT IS THIS ---- */
+    /* ---- COUNTER ---- */
+    .counter-section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .counter-number {
+      font-size: clamp(3rem, 12vw, 7rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .counter-goal {
+      font-size: 1rem;
+      color: #999;
+      margin-top: 0.25rem;
+    }
+
+    .counter-label {
+      font-size: 0.75rem;
+      color: #bbb;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ---- ABOUT ---- */
     .about-section {
-      padding: 6rem 2rem 3rem;
-      max-width: 700px;
+      padding: 4rem 2rem 3rem;
+      max-width: 620px;
       margin: 0 auto;
     }
 
     .about-section h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .about-section p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      opacity: 0.8;
       margin-bottom: 1.5rem;
       text-align: center;
     }
 
-    .about-section .highlight {
-      color: var(--accent);
-      font-weight: 600;
+    .about-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .about-section a {
+      color: #111;
+      text-decoration: underline;
     }
 
     /* ---- HOW IT WORKS ---- */
     .steps-section {
-      padding: 4rem 2rem 6rem;
-      max-width: 900px;
+      padding: 3rem 2rem 4rem;
+      max-width: 800px;
       margin: 0 auto;
     }
 
     .steps-section h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
@@ -224,178 +148,103 @@
       gap: 1rem;
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        min-height: auto;
-        padding: 4rem 2rem 4rem;
-      }
-
-      .scroll-hint {
-        display: none;
-      }
-
-      .counter-section {
-        padding: 2rem 2rem;
-      }
-
-      .video-section {
-        padding: 2rem 2rem;
-      }
-
-      .about-section {
-        padding: 3rem 2rem;
-      }
-
-      .steps-section {
-        padding: 2rem 2rem 4rem;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .tube-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        min-height: auto;
-        padding: 4rem 2rem 3rem;
-      }
-
-      .scroll-hint {
-        display: none;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .tube-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     .step {
       text-align: center;
       padding: 1.5rem 1rem;
-      border: 1px solid rgba(240, 247, 244, 0.12);
-      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
     }
 
     .step-number {
-      font-family: 'Space Mono', monospace;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      color: var(--accent);
-      opacity: 0.5;
+      color: #ccc;
       line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .step h3 {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      text-transform: uppercase;
       margin-bottom: 0.75rem;
     }
 
+    .step h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+
     .step p {
-      font-size: 0.95rem;
-      opacity: 0.6;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.5;
     }
 
     /* ---- TUBE GRID ---- */
     .grid-section {
-      padding: 2rem 2rem;
+      padding: 3rem 2rem;
     }
 
     .grid-section h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       text-align: center;
     }
 
     .grid-subtitle {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.85rem;
-      opacity: 0.4;
+      font-size: 0.8rem;
+      color: #bbb;
       text-align: center;
       margin-bottom: 1.5rem;
     }
 
-    .tube-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
-      max-width: 700px;
+    .photo-grid {
+      column-count: 3;
+      column-gap: 6px;
+      max-width: 720px;
       margin: 0 auto;
     }
 
-    .tube-card {
-      aspect-ratio: 1;
-      overflow: hidden;
-      border-radius: 4px;
+    .photo-card {
+      break-inside: avoid;
+      margin-bottom: 6px;
       position: relative;
       cursor: pointer;
-      background: rgba(0,0,0,0.08);
-      will-change: transform;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      transform: translateZ(0);
-      animation: cardShuffle var(--shuffle-duration, 6s) ease-in-out var(--shuffle-delay, 0s) infinite;
+      border-radius: 2px;
+      overflow: hidden;
+      background: #f5f5f5;
     }
 
-    .tube-card:hover {
-      animation-play-state: paused;
-      transform: scale(1.05);
-      z-index: 2;
+    .photo-card:hover {
+      opacity: 0.85;
     }
 
-    @keyframes cardShuffle {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(var(--dx1, 2px), var(--dy1, -2px)) rotate(var(--dr1, 0.5deg)); }
-      50% { transform: translate(var(--dx2, -1px), var(--dy2, 3px)) rotate(var(--dr2, -0.8deg)); }
-      75% { transform: translate(var(--dx3, -2px), var(--dy3, -1px)) rotate(var(--dr3, 0.3deg)); }
-    }
-
-    .tube-card img {
+    .photo-card img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
       display: block;
     }
 
-    .tube-card .tube-info {
+    .photo-card .photo-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
       padding: 0.5rem;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: #f0f7f4;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      font-size: 0.7rem;
+      line-height: 1.4;
       opacity: 0;
       transition: opacity 0.2s;
     }
 
-    .tube-card:hover .tube-info {
+    .photo-card:hover .photo-caption {
       opacity: 1;
     }
 
     /* Empty state */
     .empty-grid {
       text-align: center;
-      padding: 4rem 2rem;
-      max-width: 500px;
+      padding: 3rem 2rem;
+      max-width: 450px;
       margin: 0 auto;
     }
 
@@ -403,81 +252,49 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 4px;
-      max-width: 400px;
+      max-width: 350px;
       margin: 0 auto 1rem;
-      opacity: 0.15;
+      opacity: 0.1;
     }
 
     .ghost-tile {
       aspect-ratio: 1;
-      background: rgba(0,0,0,0.3);
-      border-radius: 4px;
-      animation: ghostShuffle var(--gs-dur, 5s) ease-in-out var(--gs-del, 0s) infinite;
-    }
-
-    @keyframes ghostShuffle {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
-      25% { transform: translate(var(--gx1, 3px), var(--gy1, -2px)) rotate(var(--gr1, 1deg)); opacity: 0.5; }
-      50% { transform: translate(var(--gx2, -2px), var(--gy2, 3px)) rotate(var(--gr2, -1deg)); opacity: 0.6; }
-      75% { transform: translate(var(--gx3, 2px), var(--gy3, -1px)) rotate(var(--gr3, 0.5deg)); opacity: 0.4; }
+      background: #999;
+      border-radius: 2px;
     }
 
     .empty-grid p {
-      font-family: 'Space Mono', monospace;
       font-size: 0.9rem;
-      opacity: 0.5;
+      color: #999;
       line-height: 1.6;
     }
 
-    /* ---- DONATE CTA ---- */
+    /* ---- DONATE / CONTACT ---- */
     .cta-section {
-      padding: 6rem 2rem;
+      padding: 4rem 2rem;
       text-align: center;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
     }
 
     .cta-section h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .cta-section p {
-      font-size: 1.1rem;
-      opacity: 0.6;
-      max-width: 500px;
+      font-size: 1rem;
+      color: #888;
+      max-width: 480px;
       margin: 0 auto 2rem;
       line-height: 1.7;
     }
 
-    .cta-button {
-      display: inline-block;
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--black);
-      background: var(--accent);
-      border: none;
-      padding: 1rem 2.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(43, 184, 154, 0.3);
-    }
-
-    /* ---- CONTACT FORM ---- */
     .contact-form {
-      max-width: 500px;
-      margin: 2rem auto 0;
+      max-width: 460px;
+      margin: 0 auto;
       text-align: left;
     }
 
@@ -487,46 +304,64 @@
 
     .form-group label {
       display: block;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      opacity: 0.5;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.12em;
+      color: #999;
+      margin-bottom: 0.4rem;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 0.85rem 1rem;
-      font-family: 'Space Grotesk', sans-serif;
+      padding: 0.8rem;
+      font-family: Helvetica, Arial, sans-serif;
       font-size: 1rem;
-      color: var(--white);
-      background: rgba(0,0,0,0.06);
-      border: 1px solid rgba(0,0,0,0.12);
-      border-radius: 6px;
+      color: #111;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 3px;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.2s;
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(43, 184, 154, 0.15);
+      border-color: #111;
     }
 
     .form-group textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 100px;
     }
 
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      opacity: 0.35;
+      color: #ccc;
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      background: #111;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #333;
     }
 
     .form-status {
-      font-family: 'Space Mono', monospace;
       font-size: 0.85rem;
       text-align: center;
       margin-top: 1rem;
@@ -539,32 +374,32 @@
     }
 
     .form-status.success {
-      color: var(--accent);
+      color: #111;
     }
 
     .form-status.error {
-      color: #da3e7b;
+      color: #c00;
     }
 
     /* ---- FAQ ---- */
     .faq-section {
-      padding: 6rem 2rem;
-      max-width: 700px;
+      padding: 4rem 2rem;
+      max-width: 620px;
       margin: 0 auto;
     }
 
     .faq-section h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
     .faq-item {
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid #eee;
     }
 
     .faq-item:last-child {
@@ -572,15 +407,14 @@
     }
 
     .faq-item h3 {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-      color: var(--accent);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
 
     .faq-item p {
-      font-size: 1rem;
-      opacity: 0.7;
+      font-size: 0.95rem;
+      color: #666;
       line-height: 1.7;
     }
 
@@ -588,44 +422,19 @@
     footer {
       padding: 3rem 2rem;
       text-align: center;
-      font-family: 'Space Mono', monospace;
       font-size: 0.75rem;
-      opacity: 0.3;
+      color: #bbb;
     }
 
     footer a {
-      color: var(--white);
-    }
-
-    /* ---- MARQUEE ---- */
-    .marquee {
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 1.5rem 0;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .marquee-track {
-      display: flex;
-      will-change: transform;
-    }
-
-    .marquee-track span {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      opacity: 0.2;
-      flex-shrink: 0;
-      white-space: nowrap;
+      color: #999;
     }
 
     /* ---- ANIMATIONS ---- */
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .fade-in.visible {
@@ -637,7 +446,7 @@
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.92);
       z-index: 1000;
       display: flex;
       flex-direction: column;
@@ -658,7 +467,7 @@
       max-width: 90vw;
       max-height: 80vh;
       object-fit: contain;
-      border-radius: 4px;
+      border-radius: 2px;
       transform: scale(0.95);
       transition: transform 0.3s ease;
     }
@@ -669,10 +478,8 @@
 
     .lightbox-info {
       margin-top: 1rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.85rem;
-      opacity: 0.6;
-      color: #f0f7f4;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
     }
 
     .lightbox-arrow {
@@ -681,53 +488,58 @@
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: rgba(240, 247, 244, 0.5);
-      font-size: 2.5rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 2rem;
       cursor: pointer;
       padding: 1rem;
       transition: color 0.2s;
-      font-family: 'Space Mono', monospace;
       z-index: 1001;
     }
 
     .lightbox-arrow:hover {
-      color: rgba(240, 247, 244, 0.9);
+      color: rgba(255,255,255,0.8);
     }
 
     .lightbox-prev { left: 1rem; }
     .lightbox-next { right: 1rem; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hero {
+        padding: 3rem 2rem 2rem;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .photo-grid {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero {
+        padding: 3rem 1.5rem 1.5rem;
+      }
+
+      .photo-grid {
+        column-count: 1;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- HERO -->
   <section class="hero">
-    <img src="tube-no-bg.webp" alt="Toothpaste tube" class="hero-logo">
-    <h1>Empty<br>Toothpaste<br><span>Tubes</span></h1>
-    <p class="tagline">Collecting all the empty toothpaste tubes in Charleston, WV and then building something with them.</p>
-    <div class="scroll-hint"></div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-track" id="marquee-track">
-      <span id="marquee-a"></span>
-      <span id="marquee-b"></span>
-    </div>
-  </div>
-
-  <!-- COUNTER -->
-  <section class="counter-section fade-in">
-    <div class="counter-container">
-      <div class="counter-number" id="counter">0</div>
-      <div class="counter-goal">tubes collected</div>
-      <div class="counter-label" id="counter-date"></div>
-    </div>
+    <h1>Empty<br>Toothpaste<br>Tubes</h1>
   </section>
 
   <!-- VIDEO -->
   <section class="video-section fade-in">
-    <h2>The Tubes</h2>
     <div class="video-wrapper">
       <video controls preload="metadata" poster="video-poster.svg">
         <source src="empty-toothpaste-tubes-compressed.mp4" type="video/mp4">
@@ -736,24 +548,24 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about-section fade-in">
-    <h2>What is this?</h2>
-    <p>
-      Hi, I'm Owen and I realize it's kind of an odd thing to request but if you happen to have an empty toothpaste tube laying around your bathroom&mdash;I need you to give it to me instead of throwing it in your garbage.
-    </p>
-    <p>
-      You see, for no particular reason, I was recently conducting a few experiments with Plaster of Paris to see what kinds of things you could do with it. At the time, I also had an empty toothpaste tube sitting in my bathroom so I poured plaster into it and the whole thing got hard as a rock, which I thought was kind of neat. I mean it just looks like a regular tube of toothpaste sitting there, but then you go to pick it up and you realize it doesn't feel the way you would expect it to.
-    </p>
-    <p>
-      So after that I started to wonder&hellip;what if you got a whole bunch of empty tubes together in a room and filled them all with plaster? <a href="notes.html#how-many" style="color: var(--accent);">How many could you collect?</a> <a href="notes.html#filling" style="color: var(--accent);">How would go about filling them all</a> and then what would you do with a bunch of rock hard toothpaste tubes? <a href="notes.html#display" style="color: var(--accent);">How would you display them?</a> A big pile? On a wall? What would it smell like?
-    </p>
-    <p>
-      And so these are the questions I now seek to answer and the only way I can do that is if you give me your empty toothpaste tube. We both know you're just going to toss it in the garbage once it gets down to that last little bit so what's the big deal? Just fill out the form down below and I'll come pick it up. You can even just leave it out at the end of your driveway if you want. Just remember to write something on it with a Sharpie because depending how they eventually get displayed you might be able to identify your tube later.
-    </p>
-    <p>
-      And if you have more than one tube then that's even better. Get your friends tubes and your neighbors tubes too.
-    </p>
+  <!-- COUNTER -->
+  <section class="counter-section fade-in">
+    <div class="counter-number" id="counter">0</div>
+    <div class="counter-goal">tubes collected</div>
+    <div class="counter-label" id="counter-date"></div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section class="grid-section fade-in">
+    <h2>Photos</h2>
+    <div class="grid-subtitle">click to view</div>
+    <div id="photo-grid-container"></div>
+  </section>
+
+  <!-- DONATE -->
+  <section class="cta-section fade-in">
+    <h2>Donate a tube</h2>
+    <p>Fill out the form and I'll come get it. Charleston, WV area.</p>
     <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="498773a1-8513-417e-923f-2b6ad2b754bd">
       <input type="hidden" name="subject" value="New tube donation from emptytoothpastetubes.com">
@@ -767,21 +579,16 @@
         <input type="email" id="email" name="email" placeholder="your@email.com" required>
       </div>
       <div class="form-group">
-        <label for="phone">Phone <span style="opacity: 0.4; text-transform: none; letter-spacing: 0;">(optional)</span></label>
+        <label for="phone">Phone <span style="opacity: 0.5; text-transform: none; letter-spacing: 0;">(optional)</span></label>
         <input type="tel" id="phone" name="phone" placeholder="(304) 555-1234">
       </div>
       <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="I've got a tube for you..." required></textarea>
+        <label for="message">Pickup details</label>
+        <textarea id="message" name="message" placeholder="Address or general area for pickup" required></textarea>
       </div>
       <button type="submit" class="cta-button" id="submit-btn">Send It</button>
       <div class="form-status" id="form-status"></div>
     </form>
-  </section>
-
-  <!-- TUBE GRID -->
-  <section class="grid-section fade-in">
-    <div id="tube-grid-container"></div>
   </section>
 
   <!-- FAQ -->
@@ -790,7 +597,7 @@
 
     <div class="faq-item">
       <h3>What kind of tubes do you accept?</h3>
-      <p>Any brand, any size. Travel tubes, family-sized tubes, whatever. Just make sure it's actually empty.</p>
+      <p>Any brand, any size. Travel tubes, family-sized tubes, whatever.</p>
     </div>
 
     <div class="faq-item">
@@ -809,11 +616,6 @@
     </div>
 
     <div class="faq-item">
-      <h3>Will the tubes be displayed?</h3>
-      <p>Yes. Once we've collected and filled all the tubes with plaster, the final masterpiece will be displayed somewhere in Charleston, West Virginia.</p>
-    </div>
-
-    <div class="faq-item">
       <h3>Is this some sort of political movement?</h3>
       <p>No.</p>
     </div>
@@ -826,39 +628,34 @@
   </footer>
 
   <script>
-    // Tube data fallback for local file:// access
-    const TUBE_DATA = {
-      tubes: [
-        { number: 6, image: "hegseth.webp", donor: "" },
-        { number: 5, image: "jazzjeff.webp", donor: "" },
-        { number: 4, image: "pizza_pizza.webp", donor: "" },
-        { number: 3, image: "sensodyne_1.webp", donor: "" },
-        { number: 2, image: "colgate_mini.webp", donor: "" },
-        { number: 1, image: "OR.webp", donor: "" }
+    // Photo data fallback for local file:// access
+    const PHOTO_DATA = {
+      tubeCount: 4,
+      photos: [
+        { image: "tubes/first-set-of-tubes.JPG", caption: "" },
+        { image: "tubes/first-tubes-filled.png", caption: "" }
       ]
     };
 
-    // Try fetch first (works on server), fall back to embedded data (works locally)
-    async function loadTubes() {
+    async function loadPhotos() {
       try {
-        const res = await fetch('tubes.json');
+        const res = await fetch('photos.json');
         const data = await res.json();
         return data;
       } catch (e) {
-        return TUBE_DATA;
+        return PHOTO_DATA;
       }
     }
 
     // Animate counter
     function animateCounter(target) {
       const el = document.getElementById('counter');
-      const duration = 1500;
+      const duration = 1200;
       const start = performance.now();
 
       function tick(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.floor(eased * target);
         if (progress < 1) requestAnimationFrame(tick);
@@ -868,67 +665,36 @@
       requestAnimationFrame(tick);
     }
 
-    // Build the tube grid or empty state
-    function renderGrid(tubes) {
-      const container = document.getElementById('tube-grid-container');
+    // Build the photo grid or empty state
+    function renderGrid(photos) {
+      const container = document.getElementById('photo-grid-container');
 
-      if (tubes.length === 0) {
+      if (photos.length === 0) {
         container.innerHTML = `
           <div class="empty-grid">
             <div class="empty-grid-visual" id="ghost-grid"></div>
-            <p>No tubes collected yet. This grid will fill up one tube at a time. Be the first.</p>
+            <p>No photos yet. This will fill up as the project grows.</p>
           </div>
         `;
-        // Give each ghost tile its own random dance
         const ghostGrid = document.getElementById('ghost-grid');
         for (let i = 0; i < 15; i++) {
           const tile = document.createElement('div');
           tile.className = 'ghost-tile';
-          const r = () => (Math.random() * 8 - 4).toFixed(1);
-          const rd = () => (Math.random() * 3 - 1.5).toFixed(2);
-          tile.style.setProperty('--gx1', r() + 'px');
-          tile.style.setProperty('--gy1', r() + 'px');
-          tile.style.setProperty('--gr1', rd() + 'deg');
-          tile.style.setProperty('--gx2', r() + 'px');
-          tile.style.setProperty('--gy2', r() + 'px');
-          tile.style.setProperty('--gr2', rd() + 'deg');
-          tile.style.setProperty('--gx3', r() + 'px');
-          tile.style.setProperty('--gy3', r() + 'px');
-          tile.style.setProperty('--gr3', rd() + 'deg');
-          tile.style.setProperty('--gs-dur', (4 + Math.random() * 4).toFixed(1) + 's');
-          tile.style.setProperty('--gs-del', (Math.random() * -6).toFixed(1) + 's');
           ghostGrid.appendChild(tile);
         }
         return;
       }
 
       const grid = document.createElement('div');
-      grid.className = 'tube-grid';
+      grid.className = 'photo-grid';
 
-      tubes.forEach((tube, index) => {
+      photos.forEach((photo, index) => {
         const card = document.createElement('div');
-        card.className = 'tube-card';
-
-        // Random shuffle values so each card dances differently
-        const r = () => (Math.random() * 6 - 3).toFixed(1);
-        const rd = () => (Math.random() * 1.6 - 0.8).toFixed(2);
-        card.style.setProperty('--dx1', r() + 'px');
-        card.style.setProperty('--dy1', r() + 'px');
-        card.style.setProperty('--dr1', rd() + 'deg');
-        card.style.setProperty('--dx2', r() + 'px');
-        card.style.setProperty('--dy2', r() + 'px');
-        card.style.setProperty('--dr2', rd() + 'deg');
-        card.style.setProperty('--dx3', r() + 'px');
-        card.style.setProperty('--dy3', r() + 'px');
-        card.style.setProperty('--dr3', rd() + 'deg');
-        card.style.setProperty('--shuffle-duration', (5 + Math.random() * 4).toFixed(1) + 's');
-        card.style.setProperty('--shuffle-delay', (Math.random() * -8).toFixed(1) + 's');
+        card.className = 'photo-card';
 
         card.innerHTML = `
-          <img src="tubes/${tube.image}" alt="Tube #${tube.number}" loading="lazy">
-          <div class="tube-info">
-            #${tube.number}${tube.donor ? ' &mdash; ' + tube.donor : ''}
-          </div>
+          <img src="${photo.image}" alt="${photo.caption || ''}" loading="lazy">
+          ${photo.caption ? `<div class="photo-caption">${photo.caption}</div>` : ''}
         `;
 
         card.addEventListener('click', () => {
@@ -940,216 +706,6 @@
       });
 
       container.appendChild(grid);
-    }
-
-    // Marquee text
-    function buildMarquee(count) {
-      // Generative brushing moments & thoughts
-      const days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-      const times = ['6:12am','6:47am','7:03am','7:15am','7:31am','7:44am','9:58am','10:30am','11:14pm','11:47pm','10:22pm','9:38pm','11:59pm','12:04am','6:55am','8:12am'];
-
-      const situations = [
-        'running late again',
-        'couldn\'t sleep',
-        'first day at the new job',
-        'nothing on the schedule',
-        'big interview in an hour',
-        'kids already screaming',
-        'snow day',
-        'last day of summer',
-        'forgot to buy milk',
-        'rent is due tomorrow',
-        'thinking about absolutely nothing',
-        'dog is staring at me',
-        'someone\'s mowing their lawn already',
-        'wondering if the car will start',
-        'coffee isn\'t ready yet',
-        'late night, early morning',
-        'playoff game tonight',
-        'forgot her birthday',
-        'just got home from the ER',
-        'still half asleep',
-        'hungover',
-        'excited about nothing in particular',
-        'should probably call in sick',
-        'pajamas all day',
-        'third cup of coffee',
-        'haven\'t checked the phone yet',
-        'storm knocked the power out last night',
-        'moving day',
-        'can\'t find the other shoe',
-        'road trip in two hours',
-        '{name} is picking me up in ten',
-        'dinner at {name}\'s tonight',
-        '{name} just called twice',
-        'alarm didn\'t go off',
-        'first snow of the year',
-        'laundry has been in the dryer for two days',
-        'neighbors are being loud again',
-        'groceries still in the car',
-        'dentist appointment at nine',
-        'forgot my lunch on the counter',
-        'cat knocked something over at 3am',
-        'power bill came in',
-        'the wi-fi is out again',
-        'someone parked in my spot',
-        'left the windows down and it rained',
-        'gas light has been on since yesterday',
-        'birthday tomorrow',
-        'last day before vacation',
-        'first morning in the new apartment',
-        'waiting on a callback',
-        'just got off a twelve hour shift',
-        'the hot water is out',
-        'trash day and i almost forgot',
-        'school is cancelled',
-        'haven\'t left the house in three days',
-        'vet appointment at noon',
-        'car won\'t pass inspection',
-        'paycheck finally hit',
-        'the smoke detector is chirping',
-        'package says delivered but it\'s not here',
-        '{name} is crashing on the couch tonight',
-        '{name} borrowed the car',
-        'watching {name}\'s dog this week',
-        '{name} wants to grab lunch',
-      ];
-
-      const names = ['Sara','Mike','Jordan','Chris','Pat','Danny','Alex','Sam','Ray','Kelly','Jamie','Casey','Morgan','Taylor','Jesse','Drew','Lee','Nate','Eli','Quinn','Robin','Avery','Reese','Logan','Blake','Kendall','Skyler','Devon','Rory','Frankie','Corey','Toni','Dustin','Brenda','Gina','Marcus','Hank','Dale','Shawn','Terri'];
-
-      const thoughts = [
-        'did i lock the front door',
-        'i should call my mom',
-        'what year did the titanic sink',
-        'i need new socks',
-        'is it recycling week',
-        'that dream was so weird',
-        'i wonder what\'s for lunch',
-        'when did i last change the oil',
-        'i should start running again',
-        'where did i put my keys',
-        'how long have i had this toothbrush',
-        'is the milk still good',
-        'i should learn to cook',
-        'what time does the post office close',
-        'i haven\'t been to the dentist in a while',
-        'why is the bathroom light flickering',
-        'i think i left the oven on',
-        'do i have any clean shirts',
-        'what was that noise',
-        'i should text {name} back',
-        'the faucet is still dripping',
-        'do i actually like this toothpaste',
-        'when was the last time i flossed',
-        'i should drink more water',
-        'what day is it even',
-        'i need to return that thing',
-        'is 10pm too late to eat cereal',
-        'the ceiling has a crack i never noticed',
-        'wonder how many times i\'ve done this',
-        'i should really go to bed earlier',
-        'i owe {name} twenty bucks',
-        'wonder what {name} is up to',
-        '{name} never texted me back',
-        'i told {name} i\'d be there by eight',
-        'did {name} ever fix that thing',
-        'why do i always pick this toothpaste',
-        'how much toothpaste have i used in my life',
-        'i wonder if the neighbors can hear me',
-        'what if i just didn\'t go',
-        'is it too early to text someone',
-        'that song has been stuck in my head all day',
-        'i need to cancel that subscription',
-        'when did eggs get so expensive',
-        'i should clean the gutters',
-        'wonder what my dog thinks about all day',
-        'how does the mailman know where to go',
-        'is my check engine light still on',
-        'i should really learn to parallel park',
-        'why do i own so many mugs',
-        'i think that yogurt is expired',
-        'i should change the air filter',
-        'do people actually use the hotel gym',
-        'i wonder if {name} is awake',
-        'what would i do if i won the lottery',
-        'i should start a garden',
-        'this mirror needs cleaning',
-        'when was the last time i mopped',
-        'i never use the top shelf',
-        'why is there always one sock missing',
-        'i should fix that squeaky door',
-        'how old is this tube of toothpaste',
-        'there\'s a spider in the corner and i\'m choosing peace',
-        'what\'s the weather supposed to be today',
-        'i think my watch is slow',
-        'why do i have three half-used shampoo bottles',
-        'i should probably eat breakfast today',
-        'is it weird that i talk to myself',
-        'i need a haircut',
-        'wonder how many tubes of toothpaste i\'ve used',
-        'i bet {name} is still asleep',
-        '{name} owes me a coffee',
-        'i told {name} i\'d help them move',
-      ];
-
-      // Shuffle helper
-      function shuffle(arr) {
-        const a = [...arr];
-        for (let i = a.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-      }
-
-      function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-      // Generate a mix of phrase types
-      const generated = [];
-      const shuffledSituations = shuffle(situations);
-      const shuffledThoughts = shuffle(thoughts);
-
-      for (let i = 0; i < 30; i++) {
-        const type = Math.random();
-        if (type < 0.4) {
-          // Timestamp moment: "tuesday 6:47am — running late"
-          generated.push(`${pick(days)} ${pick(times)} — ${shuffledSituations[i % shuffledSituations.length]}`);
-        } else if (type < 0.8) {
-          // Stray thought
-          generated.push(shuffledThoughts[i % shuffledThoughts.length]);
-        } else {
-          // Simple stat or fact
-          const facts = [
-            `${count} tubes and counting`,
-            'charleston, wv',
-            'plaster of paris',
-            'squeeze, sign, donate',
-          ];
-          generated.push(pick(facts));
-        }
-      }
-
-      // Replace {name} placeholders with random names
-      const filled = shuffle(generated).map(s => s.replace(/\{name\}/g, () => pick(names)));
-      const marqueeStr = filled.join(' · ') + ' · ';
-      const spanA = document.getElementById('marquee-a');
-      const spanB = document.getElementById('marquee-b');
-      spanA.textContent = marqueeStr;
-      spanB.textContent = marqueeStr;
-
-      // Measure one span's width and animate with pixels (Safari-safe)
-      requestAnimationFrame(() => {
-        const w = spanA.offsetWidth;
-        const style = document.createElement('style');
-        style.textContent = `
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-${w}px); }
-          }
-        `;
-        document.head.appendChild(style);
-        document.getElementById('marquee-track').style.animation = 'marquee 90s linear infinite';
-      });
     }
 
     // Fade-in on scroll
@@ -1165,42 +721,39 @@
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }
 
-    // Lightbox navigation
+    // Lightbox
     let currentLightboxIndex = 0;
-    let currentTubes = [];
+    let currentPhotos = [];
 
     function showLightbox(index) {
-      const tube = currentTubes[index];
+      const photo = currentPhotos[index];
       const lb = document.getElementById('lightbox');
-      lb.querySelector('img').src = `tubes/${tube.image}`;
-      document.getElementById('lightbox-info').textContent =
-        `#${tube.number}${tube.donor ? ' — ' + tube.donor : ''}`;
+      lb.querySelector('img').src = photo.image;
+      document.getElementById('lightbox-info').textContent = photo.caption || '';
       lb.classList.add('active');
     }
 
     function navigateLightbox(dir) {
-      currentLightboxIndex = (currentLightboxIndex + dir + currentTubes.length) % currentTubes.length;
+      currentLightboxIndex = (currentLightboxIndex + dir + currentPhotos.length) % currentPhotos.length;
       showLightbox(currentLightboxIndex);
     }
 
     // Init
-    loadTubes().then(data => {
-      currentTubes = data.tubes;
-      const count = data.tubes.length;
+    loadPhotos().then(data => {
+      currentPhotos = data.photos;
+      const count = data.tubeCount;
 
       animateCounter(count);
-      buildMarquee(count);
-      renderGrid(data.tubes);
+      renderGrid(data.photos);
     });
 
-    // Set dates
     const now = new Date();
     const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     document.getElementById('counter-date').textContent = 'as of ' + dateStr;
 
     initScrollAnimations();
 
-    // Contact form submission
+    // Contact form
     const form = document.getElementById('contact-form');
     if (form) {
       form.addEventListener('submit', async (e) => {
@@ -1234,7 +787,7 @@
       });
     }
 
-    // Lightbox close (element is after script tag, so defer)
+    // Lightbox close
     document.addEventListener('DOMContentLoaded', () => {
       const lightbox = document.getElementById('lightbox');
       if (lightbox) {

@@ -6,55 +6,45 @@
   <title>Notes — Empty Toothpaste Tubes</title>
   <link rel="icon" type="image/webp" href="tube-no-bg.webp">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --white: #0d1b1a;
-      --black: #f0f7f4;
-      --plaster: #dce8e2;
-      --accent: #2bb89a;
-      --accent-dark: #1f9a7e;
-    }
-
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Space Grotesk', sans-serif;
+      background: #fff;
+      color: #111;
+      font-family: Helvetica, Arial, sans-serif;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* -- header -- */
     .notes-header {
       padding: 3rem 2rem 2rem;
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .back-link {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--accent);
+      font-size: 0.75rem;
+      color: #999;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
 
-    .back-link:hover { opacity: 0.6; }
+    .back-link:hover { color: #111; }
 
     .notes-header h1 {
-      font-family: 'Space Mono', monospace;
       font-size: clamp(2rem, 5vw, 3rem);
       text-transform: uppercase;
       margin-top: 1.5rem;
       line-height: 1.1;
+      font-weight: 700;
     }
 
     .notes-header .subtitle {
       font-size: 1rem;
-      opacity: 0.5;
+      color: #999;
       margin-top: 0.75rem;
       max-width: 500px;
       line-height: 1.6;
@@ -62,7 +52,7 @@
 
     /* -- grid -- */
     .notes-grid {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 2rem auto;
       padding: 0 2rem;
       display: grid;
@@ -82,9 +72,9 @@
     /* -- note card -- */
     .note {
       padding: 1.5rem;
-      background: rgba(0,0,0,0.05);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 8px;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 4px;
     }
 
     .note.wide {
@@ -95,23 +85,17 @@
       .note.wide { grid-column: span 1; }
     }
 
-    .note:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-
     .note-date {
-      font-family: 'Space Mono', monospace;
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      opacity: 0.35;
+      letter-spacing: 0.12em;
+      color: #bbb;
       margin-bottom: 0.75rem;
     }
 
     .note-tag {
       display: inline-block;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 2px 8px;
@@ -120,21 +104,21 @@
       margin-right: 4px;
     }
 
-    .tag-collect { background: rgba(43, 184, 154, 0.12); color: var(--accent); }
-    .tag-display { background: rgba(62, 168, 218, 0.12); color: #3ea8da; }
-    .tag-fill { background: rgba(218, 62, 123, 0.12); color: #da3e7b; }
+    .tag-collect { background: #f0f0f0; color: #888; }
+    .tag-display { background: #f0f0f0; color: #888; }
+    .tag-fill { background: #f0f0f0; color: #888; }
 
     .note h2 {
-      font-family: 'Space Mono', monospace;
       font-size: 1rem;
       margin-bottom: 0.75rem;
       line-height: 1.4;
+      font-weight: 600;
     }
 
     .note p {
       font-size: 0.95rem;
       line-height: 1.7;
-      opacity: 0.75;
+      color: #666;
       margin-bottom: 0.75rem;
     }
 
@@ -142,33 +126,25 @@
 
     .note img {
       width: 100%;
-      border-radius: 4px;
+      border-radius: 2px;
       margin-bottom: 0.75rem;
     }
 
     .note video {
       width: 100%;
-      border-radius: 4px;
+      border-radius: 2px;
       margin-bottom: 0.75rem;
-    }
-
-    /* -- email signup tweaks (outer container only) -- */
-    .email-signup > div,
-    .email-signup > form {
-      border-radius: 12px !important;
-      overflow: hidden !important;
     }
 
     /* -- footer -- */
     footer {
       padding: 3rem 2rem;
       text-align: center;
-      font-family: 'Space Mono', monospace;
       font-size: 0.75rem;
-      opacity: 0.3;
+      color: #bbb;
     }
 
-    footer a { color: var(--white); }
+    footer a { color: #999; }
   </style>
 </head>
 <body>
@@ -183,7 +159,6 @@
 
     <!-- ==== ADD NEW NOTES HERE — newest first ==== -->
 
-    <!-- EXAMPLE: Text note -->
     <div class="note" id="how-many">
       <div class="note-date">March 25, 2026</div>
       <span class="note-tag tag-collect">collect</span>
@@ -191,7 +166,6 @@
       <p>Charleston has about 47,000 people. If the average person goes through maybe 4 tubes a year, that's 188,000 tubes floating around this city annually. Most of those are going straight into the garbage. Even if I got 1% of them that's almost 2,000 tubes.</p>
     </div>
 
-    <!-- EXAMPLE: Concern -->
     <div class="note" id="filling">
       <div class="note-date">March 25, 2026</div>
       <span class="note-tag tag-fill">fill</span>
@@ -199,7 +173,6 @@
       <p>One tube at a time is fine when you have six. But what about sixty? Or six hundred? Need to figure out a system. Maybe a funnel rig. Maybe a big batch of plaster and an assembly line. This is going to get messy.</p>
     </div>
 
-    <!-- EXAMPLE: Idea -->
     <div class="note" id="display">
       <div class="note-date">March 25, 2026</div>
       <span class="note-tag tag-display">display</span>
@@ -208,7 +181,7 @@
     </div>
 
     <div class="note">
-      <p>☠️ social media is dead</p>
+      <p>social media is dead</p>
     </div>
 
     <!-- ==== TEMPLATE — copy and paste to add a new note ====
@@ -230,7 +203,7 @@
   </div>
 
   <!-- EMAIL SIGNUP -->
-  <div class="email-signup" style="max-width: 500px; margin: 3rem auto; padding: 0 2rem;">
+  <div style="max-width: 500px; margin: 3rem auto; padding: 0 2rem;">
     <script async src="https://eomail5.com/form/e30274dc-dd3b-11ef-ab24-8158685a47d9.js" data-form="e30274dc-dd3b-11ef-ab24-8158685a47d9"></script>
   </div>
 
