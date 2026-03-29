@@ -2,6 +2,7 @@
   "tubeCount": 4,
   "photos": [
     { "image": "tubes/first-set-of-tubes.webp", "caption": "" },
-    { "image": "tubes/first-tubes-filled.webp", "caption": "" }
+    { "image": "tubes/first-tubes-filled.webp", "caption": "" },
+    { "image": "tubes/holding-a-tube.webp", "caption": "" }
   ]
 }
