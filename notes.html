@@ -144,6 +144,23 @@
       margin-bottom: 0.75rem;
     }
 
+    .note .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .note .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* -- footer -- */
     footer {
       padding: 3rem 2rem;
@@ -160,53 +177,28 @@
   <div class="notes-header">
     <a class="back-link" href="index.html">&larr; Back</a>
     <h1>Notes</h1>
-    <p class="subtitle">Thoughts, updates, questions, and random stuff about collecting empty toothpaste tubes.</p>
+    <p class="subtitle">Thoughts, updates, questions, and random stuff about empty toothpaste tubes.</p>
   </div>
 
   <div class="notes-grid">
 
     <!-- ==== ADD NEW NOTES HERE — newest first ==== -->
 
-    <div class="note" id="how-many">
-      <div class="note-date">March 25, 2026</div>
-      <span class="note-tag tag-collect">collect</span>
-      <h2>How many could you actually collect?</h2>
-      <p>Charleston has about 47,000 people. If the average person goes through maybe 4 tubes a year, that's 188,000 tubes floating around this city annually. Most of those are going straight into the garbage. Even if I got 1% of them that's almost 2,000 tubes.</p>
+    <div class="note wide">
+      <div class="note-date">March 30, 2026</div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/1z_r3Nbsmfg" allowfullscreen></iframe>
+      </div>
     </div>
 
-    <div class="note" id="filling">
-      <div class="note-date">March 25, 2026</div>
-      <span class="note-tag tag-fill">fill</span>
-      <h2>How would you fill them all?</h2>
-      <p>One tube at a time is fine when you have six. But what about sixty? Or six hundred? Need to figure out a system. Maybe a funnel rig. Maybe a big batch of plaster and an assembly line. This is going to get messy.</p>
+    <div class="note wide">
+      <div class="note-date">March 30, 2026</div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/4VtY5MilCD8" allowfullscreen></iframe>
+      </div>
     </div>
 
-    <div class="note" id="display">
-      <div class="note-date">March 25, 2026</div>
-      <span class="note-tag tag-display">display</span>
-      <h2>How would you display them?</h2>
-      <p>A big pile would be the simplest but feels lazy. A wall mount could look cool — rows and rows of tubes like a mosaic. Or maybe some kind of structure, like building blocks. What if you could build a chair out of them? A wall? Depends how many we end up with.</p>
-    </div>
-
-    <div class="note">
-      <p>social media is dead</p>
-    </div>
-
-    <!-- ==== TEMPLATE — copy and paste to add a new note ====
-
-    <div class="note" id="your-anchor-id">
-      <div class="note-date">Month Day, Year</div>
-      <span class="note-tag tag-collect">collect</span>
-      <h2>Title</h2>
-      <p>Your text here.</p>
-    </div>
-
-    For photos, add: <img src="path/to/image.jpg" alt="description">
-    For videos, add: <video controls><source src="path/to/video.mp4" type="video/mp4"></video>
-    For wide notes, use: class="note wide"
-    Tag options: tag-collect, tag-display, tag-fill
-
-    ==== -->
+    <!-- ==== ADD NEW VIDEO NOTES ABOVE THIS LINE ==== -->
 
   </div>
 
