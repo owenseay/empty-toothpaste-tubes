@@ -629,6 +629,11 @@
     </div>
   </section>
 
+  <!-- NOTES LINK -->
+  <section class="faq-section" style="padding-top: 0; text-align: center;">
+    <a href="notes.html" style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; text-transform: uppercase; text-decoration: underline; color: #111; text-underline-offset: 4px; transition: color 0.2s;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#111'">Notes</a>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <p>Empty Toothpaste Tubes &mdash; Charleston, WV</p>
@@ -697,14 +702,26 @@
       const grid = document.createElement('div');
       grid.className = 'photo-grid';
 
+      // Load all images first, then append grid so columns calculate correctly
+      let loaded = 0;
+      const total = photos.length;
+
       photos.forEach((photo, index) => {
         const card = document.createElement('div');
         card.className = 'photo-card';
 
-        card.innerHTML = `
-          <img src="${photo.image}" alt="${photo.caption || ''}" loading="lazy">
-          ${photo.caption ? `<div class="photo-caption">${photo.caption}</div>` : ''}
-        `;
+        const img = new Image();
+        img.src = photo.image;
+        img.alt = photo.caption || '';
+        img.loading = 'lazy';
+        card.appendChild(img);
+
+        if (photo.caption) {
+          const caption = document.createElement('div');
+          caption.className = 'photo-caption';
+          caption.textContent = photo.caption;
+          card.appendChild(caption);
+        }
 
         card.addEventListener('click', () => {
           currentLightboxIndex = index;
@@ -712,9 +729,14 @@
         });
 
         grid.appendChild(card);
-      });
 
-      container.appendChild(grid);
+        img.onload = img.onerror = () => {
+          loaded++;
+          if (loaded === total) {
+            container.appendChild(grid);
+          }
+        };
+      });
     }
 
     // Fade-in on scroll
@@ -734,20 +756,57 @@
     let currentLightboxIndex = 0;
     let currentPhotos = [];
 
+    // Scroll-lock via event prevention (avoids touching body.overflow which breaks CSS columns)
+    function preventScroll(e) { e.preventDefault(); }
+    function preventScrollKeys(e) {
+      if (['Space','PageUp','PageDown','Home','End'].includes(e.code)) e.preventDefault();
+    }
+
+    function lockScroll() {
+      document.addEventListener('wheel', preventScroll, { passive: false });
+      document.addEventListener('touchmove', preventScroll, { passive: false });
+      document.addEventListener('keydown', preventScrollKeys, { passive: false });
+    }
+
+    function unlockScroll() {
+      document.removeEventListener('wheel', preventScroll);
+      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('keydown', preventScrollKeys);
+    }
+
     function showLightbox(index) {
       const photo = currentPhotos[index];
       const lb = document.getElementById('lightbox');
       lb.querySelector('img').src = photo.image;
       document.getElementById('lightbox-info').textContent = photo.caption || '';
       lb.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      lockScroll();
     }
 
     function closeLightbox() {
       const lb = document.getElementById('lightbox');
       lb.classList.remove('active');
-      document.body.style.overflow = '';
+      unlockScroll();
     }
+
+    // Force column recalculation by nudging each card's opacity (same thing hover does)
+    function refreshGrid() {
+      const cards = document.querySelectorAll('.photo-card');
+      if (!cards.length) return;
+      cards.forEach(card => { card.style.opacity = '0.99'; });
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          cards.forEach(card => { card.style.opacity = ''; });
+        });
+      });
+    }
+
+    // Recalculate columns after resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(refreshGrid, 100);
+    });
 
     function navigateLightbox(dir) {
       currentLightboxIndex = (currentLightboxIndex + dir + currentPhotos.length) % currentPhotos.length;
