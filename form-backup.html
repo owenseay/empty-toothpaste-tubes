@@ -1,0 +1,37 @@
+<!-- DONATE / CONTACT FORM — removed from index.html, saved for future use -->
+  <section class="cta-section fade-in">
+    <h2>Add your tube</h2>
+    <p>Fill out the form and I'll come get it. Charleston, WV area.</p>
+    <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="498773a1-8513-417e-923f-2b6ad2b754bd">
+      <input type="hidden" name="subject" value="New tube donation from emptytoothpastetubes.com">
+      <input type="checkbox" name="botcheck" style="display: none;">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone <span style="opacity: 0.5; text-transform: none; letter-spacing: 0;">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="(304) 555-1234">
+      </div>
+      <div class="form-group">
+        <label for="message">Pickup details</label>
+        <textarea id="message" name="message" placeholder="Address or general area for pickup" required></textarea>
+      </div>
+      <button type="submit" class="cta-button" id="submit-btn">Send It</button>
+      <div class="form-status" id="form-status"></div>
+    </form>
+  </section>
+
+<!-- Associated CSS (already in index.html <style> block):
+  .cta-section, .contact-form, .form-group, .cta-button, .form-status styles
+-->
+
+<!-- Associated JS (contact form submit handler):
+  const form = document.getElementById('contact-form');
+  if (form) { ... }
+-->
