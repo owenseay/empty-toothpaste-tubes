@@ -81,6 +81,53 @@
       display: block;
     }
 
+    /* ---- LIVE STREAM ---- */
+    .live-section {
+      padding: 1.5rem 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .live-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: #c00;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .live-wrapper {
+      width: 100%;
+      max-width: 640px;
+      aspect-ratio: 16 / 9;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+    }
+
+    .live-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* ---- COUNTER ---- */
     .counter-section {
       padding: 3rem 2rem;
@@ -553,6 +600,14 @@
         <source src="empty-toothpaste-tubes-compressed.mp4" type="video/mp4">
         Your browser doesn't support video.
       </video>
+    </div>
+  </section>
+
+  <!-- LIVE STREAM -->
+  <section class="live-section fade-in">
+    <div class="live-label"><span class="live-dot"></span> Balcony Cam</div>
+    <div class="live-wrapper">
+      <iframe src="https://www.youtube.com/embed/HGjrTqtJZYs?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </section>
 
