@@ -81,53 +81,6 @@
       display: block;
     }
 
-    /* ---- LIVE STREAM ---- */
-    .live-section {
-      padding: 1.5rem 2rem 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .live-label {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #999;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .live-dot {
-      width: 6px;
-      height: 6px;
-      background: #c00;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .live-wrapper {
-      width: 100%;
-      max-width: 640px;
-      aspect-ratio: 16 / 9;
-      border-radius: 4px;
-      overflow: hidden;
-      border: 1px solid #e0e0e0;
-    }
-
-    .live-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
     /* ---- COUNTER ---- */
     .counter-section {
       padding: 3rem 2rem;
@@ -473,6 +426,37 @@
       line-height: 1.7;
     }
 
+    /* ---- BIGGER IDEA ---- */
+    .bigger-idea-section {
+      padding: 3rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .bigger-idea-heading {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .bigger-idea-body {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .bigger-idea-link {
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .bigger-idea-link:hover {
+      color: #555;
+    }
+
     /* ---- FOOTER ---- */
     footer {
       padding: 3rem 2rem;
@@ -591,6 +575,7 @@
   <!-- HERO -->
   <section class="hero">
     <h1>Empty<br>Toothpaste<br>Tubes</h1>
+    <p class="tagline">Collecting empty toothpaste tubes and filling them with plaster</p>
   </section>
 
   <!-- VIDEO -->
@@ -600,14 +585,6 @@
         <source src="empty-toothpaste-tubes-compressed.mp4" type="video/mp4">
         Your browser doesn't support video.
       </video>
-    </div>
-  </section>
-
-  <!-- LIVE STREAM -->
-  <section class="live-section fade-in">
-    <div class="live-label"><span class="live-dot"></span> Balcony Tube Cam</div>
-    <div class="live-wrapper">
-      <iframe src="https://www.youtube.com/embed/vE0k4ch_3SI?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </section>
 
@@ -625,9 +602,11 @@
     <div id="photo-grid-container"></div>
   </section>
 
-  <!-- NOTES LINK -->
-  <section class="faq-section" style="text-align: center;">
-    <a href="notes.html" style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; text-transform: uppercase; text-decoration: underline; color: #111; text-underline-offset: 4px; transition: color 0.2s;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#111'">Notes</a>
+  <!-- BIGGER IDEA -->
+  <section class="bigger-idea-section fade-in">
+    <p class="bigger-idea-heading">What's your material?</p>
+    <p class="bigger-idea-body">This project is part of a broader practice where I turn overlooked material into something useful, strange, or new.</p>
+    <p class="bigger-idea-body"><strong><a href="https://docs.google.com/document/d/1zvtk1sORuXnthvFF6dsI3cLR3SuprbEG88NRqXInADQ/edit?usp=sharing" target="_blank" rel="noopener" class="bigger-idea-link">Read the broader practice →</a></strong></p>
   </section>
 
   <!-- FOOTER -->
@@ -642,8 +621,7 @@
       photos: [
         { image: "tubes/first-set-of-tubes.webp", caption: "" },
         { image: "tubes/first-tubes-filled.webp", caption: "" },
-        { image: "tubes/holding-a-tube.webp", caption: "" },
-        { image: "tubes/balcony-sign.webp", caption: "" }
+        { image: "tubes/holding-a-tube.webp", caption: "" }
       ]
     };
 

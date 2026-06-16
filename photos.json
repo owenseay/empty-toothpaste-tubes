@@ -3,7 +3,6 @@
   "photos": [
     { "image": "tubes/first-set-of-tubes.webp", "caption": "" },
     { "image": "tubes/first-tubes-filled.webp", "caption": "" },
-    { "image": "tubes/holding-a-tube.webp", "caption": "" },
-    { "image": "tubes/balcony-sign.webp", "caption": "" }
+    { "image": "tubes/holding-a-tube.webp", "caption": "" }
   ]
 }
